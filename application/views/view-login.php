@@ -1,18 +1,45 @@
-<html lang="en">
+<body class="bg-gradient-primary">
 
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>KampusKita - Admin</title>
+	<div class="container">
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-</head>
+		<!-- Outer Row -->
+		<div class="row justify-content-center">
 
-<body>
-	<h1>Ini Login</h1>
+			<div class="col-lg-6">
 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-</body>
+				<div class="card o-hidden border-0 shadow-lg my-5 mb-5">
+					<div class="card-body p-0">
+						<!-- Nested Row within Card Body -->
+						<div class="row">
+							<div class="col-lg">
+								<div class="p-5">
+									<div class="text-center">
+										<img src="<?= base_url('assets/icon/banner.png'); ?>" class="mb-5" width="300px" alt="logo">
+									</div>
 
-</html>
+									<?= $this->session->flashdata('message'); ?>
+
+									<form action="<?php base_url('auth') ?>" method="POST" class="user">
+										<div class="form-group">
+											<input type="text" class="form-control form-control-user" id="username" name="username" placeholder="Username">
+											<?= form_error('username', '<small class="text-danger pl-3">', '</small> '); ?>
+										</div>
+										<div class="form-group">
+											<input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password">
+											<?= form_error('password', '<small class="text-danger pl-3">', '</small> '); ?>
+										</div>
+										<button type="submit" class="btn btn-primary btn-user btn-block">
+											Login
+										</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
