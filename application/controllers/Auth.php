@@ -32,7 +32,7 @@ class Auth extends CI_Controller
 		$admin = $this->db->get_where('admin', ['username' => $username])->row_array();
 
 		if ($admin) {
-			if ($password == $admin['password']) {
+			if ($password == $admin['password']) {	
 				redirect('home');
 			} else {
 				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong Password!</div>');
