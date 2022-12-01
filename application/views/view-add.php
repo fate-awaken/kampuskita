@@ -1,4 +1,4 @@
-<body>
+<body class="bg-primary">
 	<div class="container">
 
 		<div class="card border-0 shadow-lg my-5">
@@ -25,7 +25,7 @@
 						</div>
 						<br>
 						<hr>
-						<div class="form-group row">
+						<div class="form-group row justify-content-around">
 							<div class="col-sm-4 mb-3 mb-sm-0">
 								<input type="submit" class="btn btn-primary btn-user btn-block" value="Simpan Data">
 							</div>
@@ -33,7 +33,7 @@
 								<input type="reset" class="btn btn-danger btn-user btn-block" value="Hapus Data">
 							</div>
 							<div class="col-sm-4">
-								<a href="<?php echo site_url('home') ?>" class="btn btn-success btn-user btn-block">Kembali</a>
+								<a href="<?php echo site_url('home') ?>" class="btn btn-success btn-block btn-user">Kembali</a>
 							</div>
 						</div>
 					</form>
