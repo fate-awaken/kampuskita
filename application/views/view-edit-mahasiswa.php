@@ -32,7 +32,7 @@
 								<input type="reset" class="btn btn-outline-danger btn-user btn-block" value="Hapus Data">
 							</div>
 							<div class="col-sm-4">
-								<a href="<?php echo site_url('home') ?>" class="btn btn-outline-success btn-user btn-block">Kembali</a>
+								<a href="<?php echo site_url('home') ?>" class="btn btn-success btn-user btn-block">Kembali</a>
 							</div>
 						</div>
 					</form>

@@ -1,4 +1,4 @@
-<body class="bg-gradient-primary">
+<body style="background-color: #395144;">
 
 	<div class="container">
 
@@ -14,7 +14,7 @@
 							<div class="col-lg">
 								<div class="p-5">
 									<div class="text-center">
-										<img src="<?= base_url('assets/icon/banner-primary.png'); ?>" class="mb-5" width="300px" alt="logo">
+										<img src="<?= base_url('assets/icon/banner.png'); ?>" class="mb-5" width="300px" alt="logo">
 									</div>
 
 									<?= $this->session->flashdata('message'); ?>
@@ -28,9 +28,11 @@
 											<input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password">
 											<?= form_error('password', '<small class="text-danger pl-3">', '</small> '); ?>
 										</div>
-										<button type="submit" class="btn btn-primary btn-user btn-block">
-											Login
-										</button>
+										<center>
+											<button type="submit" class="btn btn-dark btn-user btn-block col-6 ">
+												Login
+											</button>
+										</center>
 									</form>
 								</div>
 							</div>

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Home extends CI_Controller
+class Dosen extends CI_Controller
 {
 	public function __construct()
 	{
@@ -11,12 +11,12 @@ class Home extends CI_Controller
 
 	public function index()
 	{
-		$queryAllMahasiswa = $this->ModelAdmin->getDataMahasiswa();
-		$data = array('queryAllMhs' => $queryAllMahasiswa);
+		$queryAllDosen = $this->ModelAdmin->getDataDosen();
+		$data = array('queryAllDsn' => $queryAllDosen);
 		$title['title'] = "KampusKita Home";
 		$this->load->view('templates/header', $title);
 		$this->load->view('templates/sidebar');
-		$this->load->view('view-mahasiswa.php', $data);
+		$this->load->view('view-dosen.php', $data);
 		$this->load->view('templates/footer');
 	}
 
@@ -24,59 +24,55 @@ class Home extends CI_Controller
 	{
 		$title['title'] = "Tambah Data Mahasiswa";
 		$this->load->view('templates/header', $title);
-		$this->load->view('view-add-mahasiswa');
+		$this->load->view('view-add-dosen');
 		$this->load->view('templates/footer');
 	}
 
-	public function edit($nim)
+	public function edit($nip)
 	{
-		$queryMahasiswaDetail = $this->ModelAdmin->getDataMahasiswaDetail($nim);
-		$data = array('queryMhsDetail' => $queryMahasiswaDetail);
+		$queryDosenDetail = $this->ModelAdmin->getDataDosenDetail($nip);
+		$data = array('queryDsnDetail' => $queryDosenDetail);
 		$title['title'] = "Edit Data Mahasiswa";
 		$this->load->view('templates/header', $title);
-		$this->load->view('view-edit-mahasiswa', $data);
+		$this->load->view('view-edit-dosen', $data);
 		$this->load->view('templates/footer');
 	}
 
-	public function tambahmhs()
+	public function tambahdsn()
 	{
-		$nim = $this->input->post('nim');
+		$nip = $this->input->post('nip');
 		$nama = $this->input->post('nama');
 		$email = $this->input->post('email');
-		$jurusan = $this->input->post('jurusan');
 
 		$ArrInsert = array(
-			'nim' => $nim,
+			'nip' => $nip,
 			'nama' => $nama,
 			'email' => $email,
-			'jurusan' => $jurusan
 
 		);
 
-		$this->ModelAdmin->insertDataMahasiswa($ArrInsert);
-		redirect('home');
+		$this->ModelAdmin->insertDataDosen($ArrInsert);
+		redirect('dosen');
 	}
 
-	public function editmhs()
+	public function editdsn()
 	{
-		$nim = $this->input->post('nim');
+		$nip = $this->input->post('nip');
 		$nama = $this->input->post('nama');
 		$email = $this->input->post('email');
-		$jurusan = $this->input->post('jurusan');
 
 		$ArrUpdate = array(
 			'nama' => $nama,
 			'email' => $email,
-			'jurusan' => $jurusan
 		);
 
-		$this->ModelAdmin->updateDataMahasiswa($nim, $ArrUpdate);
-		redirect('home');
+		$this->ModelAdmin->updateDataDosen($nip, $ArrUpdate);
+		redirect('dosen');
 	}
 
-	public function deletemhs($nim)
+	public function deletemhs($nip)
 	{
-		$this->ModelAdmin->deleteDataMahasiswa($nim);
-		redirect('home');
+		$this->ModelAdmin->deleteDataDosen($nip);
+		redirect('dosen');
 	}
 }

@@ -9,13 +9,14 @@
 		<!-- DataTales Example -->
 		<div class="card shadow mb-4">
 			<div class="card-header py-3">
-				<h3 class="m-0 font-weight-bold text-primary" align="center">Data Mahasiswa</h3>
+				<h3 class="m-0 font-weight-bold text-secondary" align="center">Data Mahasiswa</h3>
 			</div>
 			<div class="card-body">
+				<a href="<?= ('home/tambah') ?>" class="btn btn-outline-secondary mb-3" align="center">Tambah Mahasiswa</a>
 				<div class="table-responsive">
-					<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
-						<thead>
-							<tr>
+					<table class="table table-bordered table-hover text-center" id="dataTable" width="100%" cellspacing="0">
+						<thead class="table-secondary">
+							<tr >
 								<th>NO</th>
 								<th>NIM</th>
 								<th>Nama</th>
@@ -54,7 +55,6 @@
 						<?php } ?>
 					</table>
 				</div>
-				<a href="<?= ('home/tambah') ?>" class="btn btn-outline-primary" align="center">Tambah Mahasiswa</a>
 			</div>
 		</div>
 	</div>
