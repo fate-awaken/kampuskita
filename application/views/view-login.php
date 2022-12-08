@@ -14,7 +14,7 @@
 							<div class="col-lg">
 								<div class="p-5">
 									<div class="text-center">
-										<img src="<?= base_url('assets/icon/banner.png'); ?>" class="mb-5" width="300px" alt="logo">
+										<img src="<?= base_url('assets/icon/banner-primary.png'); ?>" class="mb-5" width="300px" alt="logo">
 									</div>
 
 									<?= $this->session->flashdata('message'); ?>

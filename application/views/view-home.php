@@ -1,41 +1,10 @@
-<body class="bg-primary">
-	<br>
-	<div class="container-fluid">
-		<div class="row justify-content-start">
-			<div class="col-4">
-				<button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
-					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-justify" viewBox="0 0 16 16">
-						<path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
-					</svg>
-				</button>
-
-				<div class="offcanvas offcanvas-start text-primary fs-5" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
-					<div class="offcanvas-header">
-						<img src="<?= base_url('assets/icon/banner-primary.png') ?>" width="250px" alt="">
-						<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-					</div>
-					<div class="offcanvas-body">
-						<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="<?php base_url('application/views/view-home') ?>">Mahasiswa</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">Dosen</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="col-4">
-				<img src="<?= base_url('assets/icon/banner-white.png') ?>" width="350px" alt="">
-			</div>
-		</div>
-	</div>
 	<br>
 	<!-- Begin Page Content -->
 	<div class="container-fluid">
 
-		<!-- Page Heading -->
+		<div id="content-wrapper" class="d-flex flex-column">
+			
+		</div>
 
 		<!-- DataTales Example -->
 		<div class="card shadow mb-4">
@@ -44,7 +13,7 @@
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
-					<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+					<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
 						<thead>
 							<tr>
 								<th>NO</th>
@@ -88,5 +57,5 @@
 				<a href="<?= ('home/tambah') ?>" class="btn btn-outline-primary" align="center">Tambah Mahasiswa</a>
 			</div>
 		</div>
-
 	</div>
+</div>

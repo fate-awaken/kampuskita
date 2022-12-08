@@ -15,6 +15,7 @@ class Home extends CI_Controller
 		$data = array('queryAllMhs' => $queryAllMahasiswa);
 		$title['title'] = "KampusKita Home";
 		$this->load->view('templates/header', $title);
+		$this->load->view('templates/sidebar');
 		$this->load->view('view-home.php', $data);
 		$this->load->view('templates/footer');
 	}
