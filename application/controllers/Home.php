@@ -54,6 +54,9 @@ class Home extends CI_Controller
 		);
 
 		$this->ModelAdmin->insertDataMahasiswa($ArrInsert);
+
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data telah berhasil ditambahkan!</div>');
+
 		redirect('home');
 	}
 
@@ -71,6 +74,9 @@ class Home extends CI_Controller
 		);
 
 		$this->ModelAdmin->updateDataMahasiswa($nim, $ArrUpdate);
+
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data telah berhasil ditambahkan!</div>');
+
 		redirect('home');
 	}
 
@@ -79,4 +85,5 @@ class Home extends CI_Controller
 		$this->ModelAdmin->deleteDataMahasiswa($nim);
 		redirect('home');
 	}
+
 }

@@ -11,14 +11,14 @@
 					<form class="user" action="<?php echo site_url('home/editmhs') ?>" method="post">
 						<div class="form-group row">
 							<div class="col-sm-12 mb-3 mb-sm-0">
-								<input type="text" class="form-control form-control-user" name="nim" placeholder="NIM" value="<?php echo $queryMhsDetail->nim ?>"><br>
+								<input type="number" class="form-control form-control-user" name="nim" placeholder="NIM" value="<?php echo $queryMhsDetail->nim ?>"><br>
 							</div>
 							<div class="col-sm-12">
 								<input type="text" class="form-control form-control-user" name="nama" placeholder="Nama" value="<?php echo $queryMhsDetail->nama ?>">
 							</div>
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control form-control-user" name="email" placeholder="Email" value="<?php echo $queryMhsDetail->email ?>">
+							<input type="email" class="form-control form-control-user" name="email" placeholder="Email" value="<?php echo $queryMhsDetail->email ?>">
 						</div>
 						<div class="form-group">
 							<input type="text" class="form-control form-control-user" name="jurusan" placeholder="Jurusan" value="<?php echo $queryMhsDetail->jurusan ?>">
@@ -26,15 +26,16 @@
 						<hr>
 						<div class="form-group row">
 							<div class="col-sm-4 mb-3 mb-sm-0">
-								<input type="submit" class="btn btn-outline-primary btn-user btn-block" value="Simpan Data">
+								<input type="submit" class="btn btn-primary btn-user btn-block" value="Simpan Data">
 							</div>
 							<div class="col-sm-4">
-								<input type="reset" class="btn btn-outline-danger btn-user btn-block" value="Hapus Data">
+								<input type="reset" class="btn btn-danger btn-user btn-block" value="Hapus Data">
 							</div>
 							<div class="col-sm-4">
 								<a href="<?php echo site_url('home') ?>" class="btn btn-success btn-user btn-block">Kembali</a>
 							</div>
 						</div>
+
 					</form>
 					<hr>
 				</div>

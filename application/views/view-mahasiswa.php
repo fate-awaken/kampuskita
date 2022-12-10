@@ -2,9 +2,8 @@
 	<!-- Begin Page Content -->
 	<div class="container-fluid">
 
-		<div id="content-wrapper" class="d-flex flex-column">
-			
-		</div>
+		<div id="content-wrapper" class="d-flex flex-column"></div>
+
 
 		<!-- DataTales Example -->
 		<div class="card shadow mb-4">
@@ -12,11 +11,27 @@
 				<h3 class="m-0 font-weight-bold text-secondary" align="center">Data Mahasiswa</h3>
 			</div>
 			<div class="card-body">
+				<center>
+					<form action="<?= base_url('') ?>">
+						<div class="input-group mb-3 col-6">
+							<input type="text" class="form-control" placeholder="Cari Mahasiswa" aria-label="Cari Mahasiswa" aria-describedby="button-addon2" autocomplete="off" autofocus>
+							<button class="btn btn-outline-success" type="button" id="button-addon2">Cari</button>
+						</div>
+					</form>
+				</center>
+
 				<a href="<?= ('home/tambah') ?>" class="btn btn-outline-secondary mb-3" align="center">Tambah Mahasiswa</a>
+
+				<center>
+					<div class="col-4">
+						<?= $this->session->flashdata('message'); ?>
+					</div>
+				</center>
+
 				<div class="table-responsive">
-					<table class="table table-bordered table-hover text-center" id="dataTable" width="100%" cellspacing="0">
+					<table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
 						<thead class="table-secondary">
-							<tr >
+							<tr>
 								<th>NO</th>
 								<th>NIM</th>
 								<th>Nama</th>
@@ -58,4 +73,4 @@
 			</div>
 		</div>
 	</div>
-</div>
+	</div>

@@ -15,19 +15,22 @@
 
 		<li class="nav-item">
 			<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-				<i class="fas fa-fw fa-cog"></i>
+				<i class="fas fa-fw fa-user"></i>
 				<span>User</span>
 			</a>
 			<div id="collapseTwo" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
 				<div class="table-secondary py-2 collapse-inner rounded">
-					<a class="collapse-item" href="<?= base_url('home')?>">Mahasiswa</a>
-					<a class="collapse-item" href="<?= base_url('dosen')?>">Dosen</a>
+					<a class="collapse-item" href="<?= base_url('home') ?>">Mahasiswa</a>
+					<a class="collapse-item" href="<?= base_url('dosen') ?>">Dosen</a>
 				</div>
 			</div>
 		</li>
 
+		<hr class="sidebar-divider my-0">
+
 		<li class="nav-item">
 			<a class="nav-link" href="#">
+				<i class="fas fa-sign-out-alt"></i>
 				<span>Log Out</span>
 			</a>
 		</li>

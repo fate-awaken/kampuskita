@@ -11,14 +11,14 @@
 					<form class="user" action="<?php echo site_url('dosen/editdsn') ?>" method="post">
 						<div class="form-group row">
 							<div class="col-sm-12 mb-3 mb-sm-0">
-								<input type="text" class="form-control form-control-user" name="nip" placeholder="NIP" value="<?php echo $queryDsnDetail->nip ?>"><br>
+								<input type="number" class="form-control form-control-user" name="nip" placeholder="NIP" value="<?php echo $queryDsnDetail->nip ?>"><br>
 							</div>
 							<div class="col-sm-12">
 								<input type="text" class="form-control form-control-user" name="nama" placeholder="Nama" value="<?php echo $queryDsnDetail->nama ?>">
 							</div>
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control form-control-user" name="email" placeholder="Email" value="<?php echo $queryDsnDetail->email ?>">
+							<input type="email" class="form-control form-control-user" name="email" placeholder="Email" value="<?php echo $queryDsnDetail->email ?>">
 						</div>
 						<hr>
 						<div class="form-group row">
