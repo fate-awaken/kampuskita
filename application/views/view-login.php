@@ -32,8 +32,15 @@
 											<button type="submit" class="btn btn-dark btn-user btn-block col-6 ">
 												Login
 											</button>
+
 										</center>
 									</form>
+
+									<hr>
+
+									<div class="text-center">
+										<a class="small" href="<?= base_url('auth/registration') ?>">Buat Akun</a>
+									</div> 
 								</div>
 							</div>
 						</div>

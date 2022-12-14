@@ -22,10 +22,10 @@ class ModelAdmin extends CI_Model
 		return $query->row();
 	}
 
-	public function updateDataMahasiswa($nim, $data)
+	public function editDataMahasiswa($where, $data)
 	{
-		$this->db->where('nim', $nim);
-		$this->db->update('mahasiswa', $data);
+			$this->db->where($where);
+			$this->db->update('mahasiswa', $data);
 	}
 
 	public function searchDataMahasiswa($nama)
@@ -39,10 +39,10 @@ class ModelAdmin extends CI_Model
 		return $query->result();
 	}
 
-	public function deleteDataMahasiswa($nim)
+	public function deleteDataMahasiswa($id)
 	{
-		$this->db->where('nim', $nim);
-		$this->db->delete('mahasiswa');
+			$this->db->where('id', $id);
+			$this->db->delete('mahasiswa');
 	}
 
 	public function getDataDosen()
