@@ -21,7 +21,7 @@
 			<div id="collapseTwo" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
 				<div class="table-secondary py-2 collapse-inner rounded">
 					<a class="collapse-item" href="<?= base_url('home') ?>">Mahasiswa</a>
-					<a class="collapse-item" href="<?= base_url('dosen') ?>">Dosen</a>
+					<a class="collapse-item" href="<?= base_url('home/getDataDosen') ?>">Dosen</a>
 				</div>
 			</div>
 		</li>

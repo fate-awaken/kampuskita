@@ -74,10 +74,10 @@ class ModelAdmin extends CI_Model
 		return $query->row();
 	}
 
-	public function updateDataDosen($nip, $data)
+	public function editDataDosen($where, $data)
 	{
-		$this->db->where('nip', $nip);
-		$this->db->update('dosen', $data);
+			$this->db->where($where);
+			$this->db->update('dosen', $data);
 	}
 
 	public function deleteDataDosen($nip)
@@ -86,4 +86,13 @@ class ModelAdmin extends CI_Model
 		$this->db->delete('dosen');
 	}
 
+	public function getDosen($limit, $start)
+	{
+			$query = $this->db->get('dosen', $limit, $start);
+			return $query->result();
+	}
+
+	public function countAllDosen() {
+		return $this->db->get('dosen')->num_rows();
+	}
 }
