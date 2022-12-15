@@ -38,11 +38,22 @@ class ModelAdmin extends CI_Model
 		$query = $this->db->get('mahasiswa');
 		return $query->result();
 	}
-
+	
 	public function deleteDataMahasiswa($id)
 	{
-			$this->db->where('id', $id);
-			$this->db->delete('mahasiswa');
+		$this->db->where('id', $id);
+		$this->db->delete('mahasiswa');
+	}
+
+	public function getMahasiswa($limit, $start)
+	{
+			$query = $this->db->get('mahasiswa', $limit, $start);
+			return $query->result();
+	}
+
+	public function countAllMahasiswa()
+	{
+			return $this->db->get('mahasiswa')->num_rows();
 	}
 
 	public function getDataDosen()
@@ -74,4 +85,5 @@ class ModelAdmin extends CI_Model
 		$this->db->where('nip', $nip);
 		$this->db->delete('dosen');
 	}
+
 }

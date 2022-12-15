@@ -22,12 +22,16 @@
 
 				<a class="btn btn-outline-secondary mb-3" align="center" data-toggle="modal" data-target="#newMahasiswa">Tambah Mahasiswa</a>
 
-				<?= $this->session->flashdata('message'); ?>
-				<?php if (validation_errors()) : ?>
-					<div class="alert alert-danger" role="alert">
-						<?= validation_errors(); ?>
+				<center>
+					<div class="col-4">
+						<?= $this->session->flashdata('message'); ?>
+						<?php if (validation_errors()) : ?>
+							<div class="alert alert-danger" role="alert">
+								<?= validation_errors(); ?>
+							</div>
+						<?php endif; ?>
 					</div>
-				<?php endif; ?>
+				</center>
 
 				<!-- <div class="table-responsive">
 					<table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
@@ -100,9 +104,13 @@
 								</td>
 
 							</tr>
-							<?php endforeach; ?>
 							<?php $i++; ?>
+							<?php endforeach; ?>
 				</table>
+
+				<?= $this->pagination->create_links(); ?>
+
+				<hr class="container-divider">
 
 			</div>
 		</div>
@@ -122,7 +130,7 @@
 				<form action="<?= base_url('home/tambahmhs'); ?>" method="post">
 					<div class="modal-body">
 						<div class="form-group">
-							<input type="text" class="form-control mb-2" id="nim" name="nim" placeholder="NIM">
+							<input type="number" class="form-control mb-2" id="nim" name="nim" placeholder="NIM">
 							<input type="text" class="form-control mb-2" id="nama" name="nama" placeholder="Nama Lengkap">
 							<input type="email" class="form-control mb-2" id="email" name="email" placeholder="Email">
 							<input type="text" class="form-control mb-2" id="jurusan" name="jurusan" placeholder="Jurusan">
@@ -152,7 +160,7 @@
 						<div class="modal-body">
 							<div class="form-group">
 								<input type="hidden" class="form-control mb-2" id="id" name="id" placeholder="id" value="<?= $row->id; ?>">
-								<input type="text" class="form-control mb-2" id="nim" name="nim" placeholder="NIM" value="<?= $row->nim; ?>">
+								<input type="number" class="form-control mb-2" id="nim" name="nim" placeholder="NIM" value="<?= $row->nim; ?>">
 								<input type="text" class="form-control mb-2" id="nama" name="nama" placeholder="Nama" value="<?= $row->nama; ?>">
 								<input type="email" class="form-control mb-2" id="email" name="email" placeholder="Email" value="<?= $row->email; ?>">
 								<input type="text" class="form-control mb-2" id="jurusan" name="jurusan" placeholder="Jurusan" value="<?= $row->jurusan; ?>">
