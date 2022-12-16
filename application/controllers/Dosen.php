@@ -67,13 +67,15 @@ class Dosen extends CI_Controller
 		$queryAllDosen = $this->ModelAdmin->getDataDosen();
 		$data = array('queryAllDsn' => $queryAllDosen);
 		$title['title'] = 'Data Dosen';
+		$dataPageActive['dataPageActive'] = "active";
+
 		$this->form_validation->set_rules('nip', 'NIP', 'required');
 		$this->form_validation->set_rules('nama', 'Nama Lengkap', 'required');
 		$this->form_validation->set_rules('email', 'Email', 'required');
 
 		if ($this->form_validation->run() == false) {
 			$this->load->view('templates/header', $title);
-			$this->load->view('templates/sidebar');
+			$this->load->view('templates/sidebar', $dataPageActive);
 			$this->load->view('view-dosen', $data);
 			$this->load->view('templates/footer');
 		} else {
