@@ -58,7 +58,7 @@
 								<td><?= $row->jurusan; ?></td>
 								<td>
 									<a class="badge badge-success" data-toggle="modal" data-target="#editMhs<?= $row->id; ?>" href=""><i class="fas fa-fw fa-edit"></i></a>
-									<a class="badge badge-danger" href="<?php echo site_url('home/deletemhs') ?>/<?php echo $row->id ?>"><i class="fas fa-fw fa-trash" href=""></i></a>
+									<a class="badge badge-danger" data-toggle="modal" data-target="#deleteMhs"><i class="fas fa-fw fa-trash" href=""></i></a>
 								</td>
 
 							</tr>
@@ -85,7 +85,7 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<form action="<?= base_url('home/tambahmhs'); ?>" method="post">
+				<form action="<?= base_url('mahasiswa/tambahmhs'); ?>" method="post">
 					<div class="modal-body">
 						<div class="form-group">
 							<input type="number" class="form-control mb-2" id="nim" name="nim" placeholder="NIM">
@@ -114,7 +114,7 @@
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<form action="<?= base_url('home/editmhs'); ?>" method="post">
+					<form action="<?= base_url('mahasiswa/editmhs'); ?>" method="post">
 						<div class="modal-body">
 							<div class="form-group">
 								<input type="hidden" class="form-control mb-2" id="id" name="id" placeholder="id" value="<?= $row->id; ?>">
@@ -146,7 +146,7 @@
 				</div>
 				<div class="modal-footer">
 					<button class="btn btn-primary" type="button" data-dismiss="modal">Cancel</button>
-					<a class="btn btn-danger" href="<?= base_url('home/deletemhs'); ?>/<?= $row->id; ?>">Delete</a>
+					<a class="btn btn-danger" href="<?= base_url('mahasiswa/deletemhs'); ?>/<?= $row->id; ?>">Delete</a>
 				</div>
 			</div>
 		</div>

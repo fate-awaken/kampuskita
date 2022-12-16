@@ -56,7 +56,7 @@
 								<td><?= $row->email; ?></td>
 								<td>
 									<a class="badge badge-success" data-toggle="modal" data-target="#editDsn<?= $row->id; ?>" href=""><i class="fas fa-fw fa-edit"></i></a>
-									<a class="badge badge-danger" href="<?php echo base_url('home/deletedsn') ?>/<?php echo $row->nip ?>"><i class="fas fa-fw fa-trash"></i></a>
+									<a class="badge badge-danger" href="<?php echo base_url('dosen/deletedsn') ?>/<?php echo $row->nip ?>"><i class="fas fa-fw fa-trash"></i></a>
 								</td>
 
 							</tr>
@@ -83,7 +83,7 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<form action="<?= base_url('home/tambahdsn'); ?>" method="post">
+				<form action="<?= base_url('dosen/tambahdsn'); ?>" method="post">
 					<div class="modal-body">
 						<div class="form-group">
 							<input type="number" class="form-control mb-2" id="nip" name="nip" placeholder="NIP">
@@ -111,7 +111,7 @@
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<form action="<?= base_url('home/editdsn'); ?>" method="post">
+					<form action="<?= base_url('dosen/editdsn'); ?>" method="post">
 						<div class="modal-body">
 							<div class="form-group">
 								<input type="hidden" class="form-control mb-2" id="id" name="id" placeholder="id" value="<?= $row->id; ?>">
@@ -142,7 +142,7 @@
 				</div>
 				<div class="modal-footer">
 					<button class="btn btn-primary" type="button" data-dismiss="modal">Cancel</button>
-					<a class="btn btn-danger" href="<?= base_url('home/deletemhs'); ?>/<?= $row->id; ?>">Delete</a>
+					<a class="btn btn-danger" href="<?= base_url('dosen/deletemhs'); ?>/<?= $row->id; ?>">Delete</a>
 				</div>
 			</div>
 		</div>

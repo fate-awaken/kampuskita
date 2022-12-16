@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Dosen extends CI_Controller
+class Mahasiswa extends CI_Controller
 {
 	public function __construct()
 	{
@@ -11,12 +11,14 @@ class Dosen extends CI_Controller
 
 	public function index()
 	{
-		$queryAllDosen = $this->ModelAdmin->getDataDosen();
-		$data = array('queryAllDsn' => $queryAllDosen);
+		$queryAllMahasiswa = $this->ModelAdmin->getDataMahasiswa();
+		$data = array('queryAllMhs' => $queryAllMahasiswa);
 		$title['title'] = "KampusKita Home";
 
-		$config['base_url'] = 'http://localhost/kampuskita/home/getdatadosen';
-		$config['total_rows'] = $this->ModelAdmin->countAllDosen();
+		//pagination
+		//config
+		$config['base_url'] = 'http://localhost/kampuskita/home/index';
+		$config['total_rows'] = $this->ModelAdmin->countAllMahasiswa();
 		$config['per_page'] = 3;
 		// $config['num_links'] = 1;
 
@@ -53,76 +55,81 @@ class Dosen extends CI_Controller
 		$this->pagination->initialize($config);
 
 		$data['start'] = $this->uri->segment(3);
-		$data['dosen'] = $this->ModelAdmin->getDosen($config['per_page'], $data['start']);
-
+		$data['mahasiswa'] = $this->ModelAdmin->getMahasiswa($config['per_page'], $data['start']);
 
 		$this->load->view('templates/header', $title);
 		$this->load->view('templates/sidebar');
-		$this->load->view('view-dosen.php', $data);
+		$this->load->view('view-mahasiswa.php', $data);
 		$this->load->view('templates/footer');
 	}
 
-	public function tambahdsn()
+	public function tambahmhs()
 	{
-		$queryAllDosen = $this->ModelAdmin->getDataDosen();
-		$data = array('queryAllDsn' => $queryAllDosen);
-		$title['title'] = 'Data Dosen';
-		$this->form_validation->set_rules('nip', 'NIP', 'required');
+		$queryAllMahasiswa = $this->ModelAdmin->getDataMahasiswa();
+		$data = array('queryAllMhs' => $queryAllMahasiswa);
+		$title['title'] = 'Data Mahasiswa';
+		$this->form_validation->set_rules('nim', 'NIM', 'required');
 		$this->form_validation->set_rules('nama', 'Nama Lengkap', 'required');
 		$this->form_validation->set_rules('email', 'Email', 'required');
+		$this->form_validation->set_rules('jurusan', 'Jurusan', 'required');
 
 		if ($this->form_validation->run() == false) {
 			$this->load->view('templates/header', $title);
 			$this->load->view('templates/sidebar');
-			$this->load->view('view-dosen', $data);
+			$this->load->view('view-mahasiswa', $data);
 			$this->load->view('templates/footer');
 		} else {
-			$nip = $this->input->post('nip');
+			$nim = $this->input->post('nim');
 			$nama = $this->input->post('nama');
 			$email = $this->input->post('email');
+			$jurusan = $this->input->post('jurusan');
 
 			$ArrInsert = array(
-				'nip' => $nip,
+				'nim' => $nim,
 				'nama' => $nama,
 				'email' => $email,
+				'jurusan' => $jurusan
 
 			);
 
-			$this->ModelAdmin->insertDataDosen($ArrInsert);
+			$this->ModelAdmin->insertDataMahasiswa($ArrInsert);
 
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data telah berhasil ditambahkan!</div>');
 
-			redirect('dosen');
+			redirect('mahasiswa');
 		}
 	}
 
-	public function editdsn()
+	public function editmhs()
 	{
 		$id = $this->input->post('id');
-		$nip = $this->input->post('nip');
+		$nim = $this->input->post('nim');
 		$nama = $this->input->post('nama');
 		$email = $this->input->post('email');
+		$jurusan = $this->input->post('jurusan');
 
 		$data = [
-			'nip' => $nip,
+			'nim' => $nim,
 			'nama' => $nama,
 			'email' => $email,
+			'jurusan' => $jurusan
 		];
 
 		$where = [
 			'id' => $id
 		];
 
-		$this->ModelAdmin->editDataDosen($where, $data, 'dosen');
+		$this->ModelAdmin->editDataMahasiswa($where, $data, 'mahasiswa');
 
 		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data telah berhasil diubah!</div>');
 
-		redirect('dosen');
+		redirect('mahasiswa');
 	}
 
-	public function deletedsn($nip)
+	public function deletemhs($id)
 	{
-		$this->ModelAdmin->deleteDataDosen($nip);
-		redirect('dosen');
+		$this->ModelAdmin->deleteDataMahasiswa($id);
+		redirect('mahasiswa');
 	}
+
 }
