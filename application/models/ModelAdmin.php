@@ -95,4 +95,5 @@ class ModelAdmin extends CI_Model
 	public function countAllDosen() {
 		return $this->db->get('dosen')->num_rows();
 	}
+
 }

@@ -12,10 +12,8 @@ class Home extends CI_Controller
 	public function index()
 	{
 		$title['title'] = "KampusKita - Home";
-		$homePageActive['homePageActive'] = "active";
-
 		$this->load->view('templates/header', $title);
-		$this->load->view('templates/sidebar', $homePageActive);
+		$this->load->view('templates/sidebar');
 		$this->load->view('view-home.php');
 		$this->load->view('templates/footer');
 	}

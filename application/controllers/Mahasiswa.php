@@ -14,13 +14,12 @@ class Mahasiswa extends CI_Controller
 		$queryAllMahasiswa = $this->ModelAdmin->getDataMahasiswa();
 		$data = array('queryAllMhs' => $queryAllMahasiswa);
 		$title['title'] = "KampusKita Mahasiswa";
-		$dataPageActive['dataPageActive'] = "active";
 
 		//pagination
 		//config
 		$config['base_url'] = 'http://localhost/kampuskita/mahasiswa/index';
 		$config['total_rows'] = $this->ModelAdmin->countAllMahasiswa();
-		$config['per_page'] = 3;
+		$config['per_page'] = 7;
 		// $config['num_links'] = 1;
 
 		//styling
@@ -59,7 +58,7 @@ class Mahasiswa extends CI_Controller
 		$data['mahasiswa'] = $this->ModelAdmin->getMahasiswa($config['per_page'], $data['start']);
 
 		$this->load->view('templates/header', $title);
-		$this->load->view('templates/sidebar', $dataPageActive);
+		$this->load->view('templates/sidebar');
 		$this->load->view('view-mahasiswa.php', $data);
 		$this->load->view('templates/footer');
 	}

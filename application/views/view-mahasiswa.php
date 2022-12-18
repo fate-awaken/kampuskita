@@ -38,12 +38,11 @@
 					</thead>
 					<tbody>
 						<?php
-						$i = 1;
-						foreach ($queryAllMhs as $row) :
+						foreach ($mahasiswa as $row) :
 						?>
 
 							<tr>
-								<td><?= $i; ?></td>
+								<td><?= ++$start; ?></td>
 								<td><?= $row->nim; ?></td>
 								<td><?= $row->nama; ?></td>
 								<td><?= $row->email; ?></td>
@@ -54,7 +53,6 @@
 								</td>
 
 							</tr>
-							<?php $i++; ?>
 						<?php endforeach; ?>
 				</table>
 
@@ -80,10 +78,10 @@
 				<form action="<?= base_url('mahasiswa/tambahmhs'); ?>" method="post">
 					<div class="modal-body">
 						<div class="form-group">
-							<input type="number" class="form-control mb-2" id="nim" name="nim" placeholder="NIM">
-							<input type="text" class="form-control mb-2" id="nama" name="nama" placeholder="Nama Lengkap">
-							<input type="email" class="form-control mb-2" id="email" name="email" placeholder="Email">
-							<input type="text" class="form-control mb-2" id="jurusan" name="jurusan" placeholder="Jurusan">
+							<input type="number" class="form-control mb-2" id="nim" name="nim" placeholder="NIM" required>
+							<input type="text" class="form-control mb-2" id="nama" name="nama" placeholder="Nama Lengkap" required>
+							<input type="email" class="form-control mb-2" id="email" name="email" placeholder="Email" required>
+							<input type="text" class="form-control mb-2" id="jurusan" name="jurusan" placeholder="Jurusan" required>
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -96,7 +94,7 @@
 	</div>
 
 	<!-- modal edit -->
-	<?php foreach ($queryAllMhs as $row) : ?>
+	<?php foreach ($mahasiswa as $row) : ?>
 		<div class="modal fade" id="editMhs<?= $row->id; ?>" tabindex="-1" aria-labelledby="newMenuModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -127,23 +125,22 @@
 	<?php endforeach; ?>
 
 	<!-- delet data-->
-	<?php foreach ($queryAllMhs as $row) : ?>
-	<div class="modal fade" id="deleteMhs<?= $row->id; ?>" tabindex="-1" aria-labelledby="newMenuModalLabel"
-	    aria-hidden="true">
-	    <div class="modal-dialog">
-	        <div class="modal-content">
-	            <div class="modal-header">
-	                <h5 class="modal-title" id="newMenuModalLabel">Hapus <?= $row->nama; ?> ?</h5>
-	                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	                    <span aria-hidden="true">&times;</span>
-	                </button>
-	            </div>
-	            <div class="modal-footer">
-	                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-	                <a class="btn btn-primary" href="<?= base_url('mahasiswa/deleteMhs'); ?>/<?= $row->id; ?>">Delete</a>
-	            </div>
+	<?php foreach ($mahasiswa as $row) : ?>
+		<div class="modal fade" id="deleteMhs<?= $row->id; ?>" tabindex="-1" aria-labelledby="newMenuModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="newMenuModalLabel">Hapus <?= $row->nama; ?> ?</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+						<a class="btn btn-primary" href="<?= base_url('mahasiswa/deleteMhs'); ?>/<?= $row->id; ?>">Delete</a>
+					</div>
 
-	        </div>
-	    </div>
-	</div>
+				</div>
+			</div>
+		</div>
 	<?php endforeach; ?>

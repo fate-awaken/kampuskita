@@ -37,12 +37,11 @@
 				</thead>
 				<tbody>
 					<?php
-					$i = 1;
-					foreach ($queryAllDsn as $row) :
+					foreach ($dosen as $row) :
 					?>
 
 						<tr>
-							<td><?= $i; ?></td>
+							<td><?= ++$start; ?></td>
 							<td><?= $row->nip; ?></td>
 							<td><?= $row->nama; ?></td>
 							<td><?= $row->email; ?></td>
@@ -52,7 +51,6 @@
 							</td>
 
 						</tr>
-						<?php $i++; ?>
 					<?php endforeach; ?>
 			</table>
 
@@ -78,9 +76,9 @@
 			<form action="<?= base_url('dosen/tambahdsn'); ?>" method="post">
 				<div class="modal-body">
 					<div class="form-group">
-						<input type="number" class="form-control mb-2" id="nip" name="nip" placeholder="NIP">
-						<input type="text" class="form-control mb-2" id="nama" name="nama" placeholder="Nama Lengkap">
-						<input type="email" class="form-control mb-2" id="email" name="email" placeholder="Email">
+						<input type="number" class="form-control mb-2" id="nip" name="nip" placeholder="NIP" required>
+						<input type="text" class="form-control mb-2" id="nama" name="nama" placeholder="Nama Lengkap" required>
+						<input type="email" class="form-control mb-2" id="email" name="email" placeholder="Email" required>
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -93,7 +91,7 @@
 </div>
 
 <!-- modal edit -->
-<?php foreach ($queryAllDsn as $row) : ?>
+<?php foreach ($dosen as $row) : ?>
 	<div class="modal fade" id="editDsn<?= $row->id; ?>" tabindex="-1" aria-labelledby="newMenuModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -123,7 +121,7 @@
 <?php endforeach; ?>
 
 <!-- delet data-->
-<?php foreach ($queryAllDsn as $row) : ?>
+<?php foreach ($dosen as $row) : ?>
 	<div class="modal fade" id="deleteDsn<?= $row->id; ?>" tabindex="-1" aria-labelledby="newMenuModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">

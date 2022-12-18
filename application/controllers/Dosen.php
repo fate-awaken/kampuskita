@@ -12,12 +12,13 @@ class Dosen extends CI_Controller
 	public function index()
 	{
 		$queryAllDosen = $this->ModelAdmin->getDataDosen();
-		$data = array('queryAllDsn' => $queryAllDosen);
+		$data = array('dosen' => $queryAllDosen);
 		$title['title'] = "KampusKita Home";
 
-		$config['base_url'] = 'http://localhost/kampuskita/home/getdatadosen';
+		//pagination
+		$config['base_url'] = 'http://localhost/kampuskita/dosen/index/';
 		$config['total_rows'] = $this->ModelAdmin->countAllDosen();
-		$config['per_page'] = 3;
+		$config['per_page'] = 7;
 		// $config['num_links'] = 1;
 
 		//styling
@@ -54,6 +55,7 @@ class Dosen extends CI_Controller
 
 		$data['start'] = $this->uri->segment(3);
 		$data['dosen'] = $this->ModelAdmin->getDosen($config['per_page'], $data['start']);
+
 
 
 		$this->load->view('templates/header', $title);
