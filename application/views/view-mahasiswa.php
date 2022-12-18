@@ -58,12 +58,12 @@
 								<td><?= $row->jurusan; ?></td>
 								<td>
 									<a class="badge badge-success" data-toggle="modal" data-target="#editMhs<?= $row->id; ?>" href=""><i class="fas fa-fw fa-edit"></i></a>
-									<a class="badge badge-danger" data-toggle="modal" data-target="#deleteMhs"><i class="fas fa-fw fa-trash" href=""></i></a>
+									<a class="badge badge-danger" data-toggle="modal" data-target="#deleteMhs<?= $row->id; ?>"><i class="fas fa-fw fa-trash"></i></a>
 								</td>
 
 							</tr>
 							<?php $i++; ?>
-							<?php endforeach; ?>
+						<?php endforeach; ?>
 				</table>
 
 				<?= $this->pagination->create_links(); ?>
@@ -135,19 +135,27 @@
 	<?php endforeach; ?>
 
 	<!-- delet data-->
-	<div class="modal fade" id="deleteMhs" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
-					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">×</span>
-					</button>
-				</div>
-				<div class="modal-footer">
-					<button class="btn btn-primary" type="button" data-dismiss="modal">Cancel</button>
-					<a class="btn btn-danger" href="<?= base_url('mahasiswa/deletemhs'); ?>/<?= $row->id; ?>">Delete</a>
-				</div>
-			</div>
-		</div>
+	<?php foreach ($queryAllMhs as $row) : ?>
+	<div class="modal fade" id="deleteMhs<?= $row->id; ?>" tabindex="-1" aria-labelledby="newMenuModalLabel"
+	    aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <h5 class="modal-title" id="newMenuModalLabel">Hapus <?= $row->nama; ?> ?</h5>
+	                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	                    <span aria-hidden="true">&times;</span>
+	                </button>
+	            </div>
+
+	            <div class="modal-body">
+
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+	                <a class="btn btn-primary" href="<?= base_url('mahasiswa/deleteMhs'); ?>/<?= $row->id; ?>">Delete</a>
+	            </div>
+
+	        </div>
+	    </div>
 	</div>
+	<?php endforeach; ?>

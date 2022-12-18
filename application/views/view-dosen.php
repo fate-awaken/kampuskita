@@ -1,149 +1,156 @@
 <br>
-	<!-- Begin Page Content -->
-	<div class="container-fluid">
+<!-- Begin Page Content -->
+<div class="container-fluid">
 
-		<div id="content-wrapper" class="d-flex flex-column"></div>
+	<div id="content-wrapper" class="d-flex flex-column"></div>
 
 
-		<!-- DataTales Example -->
-		<div class="card shadow mb-4">
-			<div class="card-header py-3">
-				<h3 class="m-0 font-weight-bold text-secondary" align="center">Data Dosen</h3>
-			</div>
-			<div class="card-body">
-				<center>
-					<form action="<?= base_url('') ?>">
-						<div class="input-group mb-3 col-6">
-							<input type="text" class="form-control" placeholder="Cari Dosen" aria-label="Cari Mahasiswa" aria-describedby="button-addon2" autocomplete="off" autofocus>
-							<button class="btn btn-outline-success" type="button" id="button-addon2">Cari</button>
-						</div>
-					</form>
-				</center>
-
-				<a class="btn btn-outline-secondary mb-3" align="center" data-toggle="modal" data-target="#newDosen">Tambah Dosen</a>
-
-				<center>
-					<div class="col-4">
-						<?= $this->session->flashdata('message'); ?>
-						<?php if (validation_errors()) : ?>
-							<div class="alert alert-danger" role="alert">
-								<?= validation_errors(); ?>
-							</div>
-						<?php endif; ?>
+	<!-- DataTales Example -->
+	<div class="card shadow mb-4">
+		<div class="card-header py-3">
+			<h3 class="m-0 font-weight-bold text-secondary" align="center">Data Dosen</h3>
+		</div>
+		<div class="card-body">
+			<center>
+				<form action="<?= base_url('') ?>">
+					<div class="input-group mb-3 col-6">
+						<input type="text" class="form-control" placeholder="Cari Dosen" aria-label="Cari Mahasiswa" aria-describedby="button-addon2" autocomplete="off" autofocus>
+						<button class="btn btn-outline-success" type="button" id="button-addon2">Cari</button>
 					</div>
-				</center>
+				</form>
+			</center>
 
-				<table class="table table-hover text-dark">
-					<thead class="table-secondary">
+			<a class="btn btn-outline-secondary mb-3" align="center" data-toggle="modal" data-target="#newDosen">Tambah Dosen</a>
+
+			<center>
+				<div class="col-4">
+					<?= $this->session->flashdata('message'); ?>
+					<?php if (validation_errors()) : ?>
+						<div class="alert alert-danger" role="alert">
+							<?= validation_errors(); ?>
+						</div>
+					<?php endif; ?>
+				</div>
+			</center>
+
+			<table class="table table-hover text-dark">
+				<thead class="table-secondary">
+					<tr>
+						<th scope="col">No</th>
+						<th scope="col">NIP</th>
+						<th scope="col">Nama Lengkap</th>
+						<th scope="col">Email</th>
+						<th scope="col">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+					$i = 1;
+					foreach ($queryAllDsn as $row) :
+					?>
+
 						<tr>
-							<th scope="col">No</th>
-							<th scope="col">NIP</th>
-							<th scope="col">Nama Lengkap</th>
-							<th scope="col">Email</th>
-							<th scope="col">Action</th>
+							<td><?= $i; ?></td>
+							<td><?= $row->nip; ?></td>
+							<td><?= $row->nama; ?></td>
+							<td><?= $row->email; ?></td>
+							<td>
+								<a class="badge badge-success" data-toggle="modal" data-target="#editDsn<?= $row->id; ?>" href=""><i class="fas fa-fw fa-edit"></i></a>
+								<a class="badge badge-danger" data-toggle="modal" data-target="#deleteDsn<?= $row->id; ?>"><i class="fas fa-fw fa-trash"></i></a>
+							</td>
+
 						</tr>
-					</thead>
-					<tbody>
-						<?php
-						$i = 1;
-						foreach ($queryAllDsn as $row) :
-						?>
+						<?php $i++; ?>
+					<?php endforeach; ?>
+			</table>
 
-							<tr>
-								<td><?= $i; ?></td>
-								<td><?= $row->nip; ?></td>
-								<td><?= $row->nama; ?></td>
-								<td><?= $row->email; ?></td>
-								<td>
-									<a class="badge badge-success" data-toggle="modal" data-target="#editDsn<?= $row->id; ?>" href=""><i class="fas fa-fw fa-edit"></i></a>
-									<a class="badge badge-danger" href="<?php echo base_url('dosen/deletedsn') ?>/<?php echo $row->nip ?>"><i class="fas fa-fw fa-trash"></i></a>
-								</td>
+			<?= $this->pagination->create_links(); ?>
 
-							</tr>
-							<?php $i++; ?>
-							<?php endforeach; ?>
-				</table>
+			<hr class="container-divider">
 
-				<?= $this->pagination->create_links(); ?>
-
-				<hr class="container-divider">
-
-			</div>
 		</div>
 	</div>
-	</div>
-	</div>
+</div>
+</div>
+</div>
 
-	<div class="modal fade" id="newDosen" tabindex="-1" aria-labelledby="newMenuModalLabel" aria-hidden="true">
+<div class="modal fade" id="newDosen" tabindex="-1" aria-labelledby="newMenuModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="newMenuModalLabel">Tambah Data Dosen</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form action="<?= base_url('dosen/tambahdsn'); ?>" method="post">
+				<div class="modal-body">
+					<div class="form-group">
+						<input type="number" class="form-control mb-2" id="nip" name="nip" placeholder="NIP">
+						<input type="text" class="form-control mb-2" id="nama" name="nama" placeholder="Nama Lengkap">
+						<input type="email" class="form-control mb-2" id="email" name="email" placeholder="Email">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+					<button type="submit" class="btn btn-primary">Tambah</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<!-- modal edit -->
+<?php foreach ($queryAllDsn as $row) : ?>
+	<div class="modal fade" id="editDsn<?= $row->id; ?>" tabindex="-1" aria-labelledby="newMenuModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="newMenuModalLabel">Tambah Data Dosen</h5>
+					<h5 class="modal-title" id="newMenuModalLabel">Edit Data <?= $row->nama; ?></h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<form action="<?= base_url('dosen/tambahdsn'); ?>" method="post">
+				<form action="<?= base_url('dosen/editdsn'); ?>" method="post">
 					<div class="modal-body">
 						<div class="form-group">
-							<input type="number" class="form-control mb-2" id="nip" name="nip" placeholder="NIP">
-							<input type="text" class="form-control mb-2" id="nama" name="nama" placeholder="Nama Lengkap">
-							<input type="email" class="form-control mb-2" id="email" name="email" placeholder="Email">
+							<input type="hidden" class="form-control mb-2" id="id" name="id" placeholder="id" value="<?= $row->id; ?>">
+							<input type="number" class="form-control mb-2" id="nip" name="nip" placeholder="NIP" value="<?= $row->nip; ?>">
+							<input type="text" class="form-control mb-2" id="nama" name="nama" placeholder="Nama" value="<?= $row->nama; ?>">
+							<input type="email" class="form-control mb-2" id="email" name="email" placeholder="Email" value="<?= $row->email; ?>">
 						</div>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-						<button type="submit" class="btn btn-primary">Tambah</button>
+						<button type="submit" class="btn btn-primary">Ubah</button>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
+<?php endforeach; ?>
 
-	<!-- modal edit -->
-	<?php foreach ($queryAllDsn as $row) : ?>
-		<div class="modal fade" id="editDsn<?= $row->id; ?>" tabindex="-1" aria-labelledby="newMenuModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="newMenuModalLabel">Edit Data <?= $row->nama; ?></h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<form action="<?= base_url('dosen/editdsn'); ?>" method="post">
-						<div class="modal-body">
-							<div class="form-group">
-								<input type="hidden" class="form-control mb-2" id="id" name="id" placeholder="id" value="<?= $row->id; ?>">
-								<input type="number" class="form-control mb-2" id="nip" name="nip" placeholder="NIP" value="<?= $row->nip; ?>">
-								<input type="text" class="form-control mb-2" id="nama" name="nama" placeholder="Nama" value="<?= $row->nama; ?>">
-								<input type="email" class="form-control mb-2" id="email" name="email" placeholder="Email" value="<?= $row->email; ?>">
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-							<button type="submit" class="btn btn-primary">Ubah</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	<?php endforeach; ?>
-
-	<!-- delet data-->
-	<div class="modal fade" id="deleteMhs" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
+<!-- delet data-->
+<?php foreach ($queryAllDsn as $row) : ?>
+	<div class="modal fade" id="deleteDsn<?= $row->id; ?>" tabindex="-1" aria-labelledby="newMenuModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
-					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">×</span>
+					<h5 class="modal-title" id="newMenuModalLabel">Hapus <?= $row->nama; ?> ?</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-footer">
-					<button class="btn btn-primary" type="button" data-dismiss="modal">Cancel</button>
-					<a class="btn btn-danger" href="<?= base_url('dosen/deletemhs'); ?>/<?= $row->id; ?>">Delete</a>
+
+				<div class="modal-body">
+
 				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+					<a class="btn btn-primary" href="<?= base_url('dosen/deletedsn'); ?>/<?= $row->id; ?>">Delete</a>
+				</div>
+
 			</div>
 		</div>
 	</div>
+<?php endforeach; ?>

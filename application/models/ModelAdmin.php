@@ -39,10 +39,10 @@ class ModelAdmin extends CI_Model
 		return $query->result();
 	}
 	
-	public function deleteDataMahasiswa($id)
+	function deleteDataMahasiswa($where, $table)
 	{
-		$this->db->where('id', $id);
-		$this->db->delete('mahasiswa');
+		$this->db->where($where);
+		$this->db->delete($table);
 	}
 
 	public function getMahasiswa($limit, $start)
@@ -80,10 +80,10 @@ class ModelAdmin extends CI_Model
 			$this->db->update('dosen', $data);
 	}
 
-	public function deleteDataDosen($nip)
+	public function deleteDataDosen($where, $table)
 	{
-		$this->db->where('nip', $nip);
-		$this->db->delete('dosen');
+		$this->db->where($where);
+		$this->db->delete($table);
 	}
 
 	public function getDosen($limit, $start)

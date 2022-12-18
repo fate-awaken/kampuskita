@@ -122,9 +122,10 @@ class Dosen extends CI_Controller
 		redirect('dosen');
 	}
 
-	public function deletedsn($nip)
+	public function deletedsn($id)
 	{
-		$this->ModelAdmin->deleteDataDosen($nip);
+		$where = array('id' => $id);
+		$this->ModelAdmin->deleteDataMahasiswa($where, 'dosen');
 		redirect('dosen');
 	}
 }

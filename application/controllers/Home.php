@@ -19,4 +19,13 @@ class Home extends CI_Controller
 		$this->load->view('view-home.php');
 		$this->load->view('templates/footer');
 	}
+
+	public function viewProfile()
+	{
+		$title['title'] = "KampusKita Profile";
+		$this->load->view('templates/header', $title);
+		$this->load->view('templates/sidebar');
+		$this->load->view('view-home-profile.php');
+		$this->load->view('templates/footer');
+	}
 }

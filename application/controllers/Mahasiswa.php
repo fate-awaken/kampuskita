@@ -127,10 +127,10 @@ class Mahasiswa extends CI_Controller
 		redirect('mahasiswa');
 	}
 
-	public function deletemhs($id)
+	function deleteMhs($id)
 	{
-		$this->ModelAdmin->deleteDataMahasiswa($id);
+		$where = array('id' => $id);
+		$this->ModelAdmin->deleteDataMahasiswa($where, 'mahasiswa');
 		redirect('mahasiswa');
 	}
-
 }
