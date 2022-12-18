@@ -11,14 +11,6 @@
 				<h3 class="m-0 font-weight-bold text-secondary" align="center">Data Mahasiswa</h3>
 			</div>
 			<div class="card-body">
-				<center>
-					<form action="<?= base_url('') ?>">
-						<div class="input-group mb-3 col-6">
-							<input type="text" class="form-control" placeholder="Cari Mahasiswa" aria-label="Cari Mahasiswa" aria-describedby="button-addon2" autocomplete="off" autofocus>
-							<button class="btn btn-outline-success" type="button" id="button-addon2">Cari</button>
-						</div>
-					</form>
-				</center>
 
 				<a class="btn btn-outline-secondary mb-3" align="center" data-toggle="modal" data-target="#newMahasiswa">Tambah Mahasiswa</a>
 
@@ -145,10 +137,6 @@
 	                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	                    <span aria-hidden="true">&times;</span>
 	                </button>
-	            </div>
-
-	            <div class="modal-body">
-
 	            </div>
 	            <div class="modal-footer">
 	                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

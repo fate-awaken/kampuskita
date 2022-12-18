@@ -11,14 +11,6 @@
 			<h3 class="m-0 font-weight-bold text-secondary" align="center">Data Dosen</h3>
 		</div>
 		<div class="card-body">
-			<center>
-				<form action="<?= base_url('') ?>">
-					<div class="input-group mb-3 col-6">
-						<input type="text" class="form-control" placeholder="Cari Dosen" aria-label="Cari Mahasiswa" aria-describedby="button-addon2" autocomplete="off" autofocus>
-						<button class="btn btn-outline-success" type="button" id="button-addon2">Cari</button>
-					</div>
-				</form>
-			</center>
 
 			<a class="btn btn-outline-secondary mb-3" align="center" data-toggle="modal" data-target="#newDosen">Tambah Dosen</a>
 
@@ -142,9 +134,6 @@
 					</button>
 				</div>
 
-				<div class="modal-body">
-
-				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
 					<a class="btn btn-primary" href="<?= base_url('dosen/deletedsn'); ?>/<?= $row->id; ?>">Delete</a>
