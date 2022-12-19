@@ -20,11 +20,11 @@ class Auth extends CI_Controller
 			$this->load->view('view-login.php');
 			$this->load->view('templates/footer');
 		} else {
-			$this->_login();
+			$this->adminLogin();
 		}
 	}
 
-	private function _login()
+	private function adminLogin()
 	{
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
@@ -62,17 +62,90 @@ class Auth extends CI_Controller
 			$this->load->view('view-register');
 			$this->load->view('templates/footer');
 		} else {
-			$data = [
-				'username' => htmlspecialchars($this->input->post('username')),
-				'email' => htmlspecialchars($this->input->post('email')),
-				'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
-				'role_id' => 1,
-				'date_created' => time()
-			];
+			if ($this->input->post('accountType') == 'Admin') {
 
-			$this->db->insert('admin', $data);
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been created. Please Login</div>');
-			redirect('auth');
+				$role_id = 1;
+				$data = [
+					'username' => htmlspecialchars($this->input->post('username')),
+					'email' => htmlspecialchars($this->input->post('email')),
+					'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+					'role_id' => $role_id,
+					'date_created' => time()
+				];
+
+				$this->db->insert('admin', $data);
+				$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been created. Please Login</div>');
+				redirect('auth');
+			} elseif ($this->input->post('accountType') == 'Mahasiswa') {
+
+				$role_id = 2;
+				$data = [
+					'username' => htmlspecialchars($this->input->post('username')),
+					'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+					'email' => htmlspecialchars($this->input->post('email')),
+					'role_id' => $role_id,
+					'date_created' => time()
+				];
+
+				$this->db->insert('user', $data);
+				$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been created. Please Login</div>');
+				redirect('auth/user');
+			} elseif ($this->input->post('accountType') == 'Dosen') {
+				$role_id = 3;
+				$data = [
+					'username' => htmlspecialchars($this->input->post('username')),
+					'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+					'email' => htmlspecialchars($this->input->post('email')),
+					'role_id' => $role_id,
+					'date_created' => time()
+				];
+
+				$this->db->insert('user', $data);
+				$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been created. Please Login</div>');
+				redirect('auth/user');
+			}
+		}
+	}
+
+
+	public function user()
+	{
+		$this->form_validation->set_rules('username', 'Username', 'trim|required');
+		$this->form_validation->set_rules('password', 'Password', 'trim|required');
+
+		if ($this->form_validation->run() == false) {
+			$data['title'] = "Login - KampusKita";
+			$this->load->view('templates/header', $data);
+			$this->load->view('user/view-login-user.php');
+			$this->load->view('templates/footer');
+		} else {
+			$this->userLogin();
+		}
+	}
+
+	public function userLogin()
+	{
+		$email = $this->input->post('email');
+		$password = $this->input->post('password');
+
+		$user = $this->db->get_where('user', ['email' => $email])->row_array();
+
+		if ($user) {
+			if (password_verify($password, $user['password'])) {
+
+				if ($user['role_id'] == 2) {
+					redirect('user/loadPageMahasiswa');
+				} elseif ($user['role_id'] == 3) {
+					redirect('user/loadPageDosen');
+				}
+				redirect('user/user');
+			} else {
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password!</div>');
+				redirect('auth/user');
+			}
+		} else {
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email not registered!</div>');
+			redirect('auth/user');
 		}
 	}
 
@@ -82,6 +155,6 @@ class Auth extends CI_Controller
 		$this->session->unset_userdata('role_id');
 
 		$this->session->set_flashdata('message', '<script>alert("Your have been logged out");</script>');
-		redirect('auth');
+		redirect('auth/user');
 	}
 }

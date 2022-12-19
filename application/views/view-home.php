@@ -64,6 +64,7 @@
 		<div class="row">
 			<div class="col-sm-6">
 				<div class="card">
+					<img src="<?= base_url('assets/')?>img/mahasiswa.jpg" class="card-img-top" alt="mahasiswa">
 					<div class="card-body">
 						<h5 class="card-title">Data Mahasiswa</h5>
 						<p class="card-text">Halaman yang berisi data mahasiswa seperti NIM, Nama Lengkap, Email dan Jurusan</p>
@@ -75,6 +76,7 @@
 			</div>
 			<div class="col-sm-6">
 				<div class="card">
+					<img src="<?= base_url('assets/')?>img/dosen.jpg" class="card-img-top" alt="dosen">
 					<div class="card-body">
 						<h5 class="card-title">Data Dosen</h5>
 						<p class="card-text"> Halaman yang berisi data dosen seperti NIP, Nama Lengkap dan Email</p>
