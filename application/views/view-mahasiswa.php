@@ -9,6 +9,19 @@
 			</div>
 			<div class="card-body">
 
+				<div class="row justify-content-center">
+					<div class="col-5">
+						<?php echo form_open('mahasiswa/searchmhs') ?>
+						<div class="input-group mb-3">
+							<input type="text" name="keyword" class="form-control" placeholder="Cari Mahasiswa">
+							<div class="input-group-append">
+								<button class="btn btn-outline-success" type="button">Cari</button>
+							</div>
+						</div>
+						<?php echo form_close()?>
+					</div>
+				</div>
+
 				<a class="btn btn-outline-secondary mb-3" align="center" data-toggle="modal" data-target="#newMahasiswa">Tambah Mahasiswa</a>
 
 				<center>

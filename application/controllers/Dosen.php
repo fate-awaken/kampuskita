@@ -124,6 +124,60 @@ class Dosen extends CI_Controller
 		redirect('dosen');
 	}
 
+	public function searchdsn()
+	{
+		$queryAllDosen = $this->ModelAdmin->getDataDosen();
+		$data = array('dosen' => $queryAllDosen);
+		$title['title'] = "KampusKita Home";
+
+		//pagination
+		$config['base_url'] = 'http://localhost/kampuskita/dosen/index/';
+		$config['total_rows'] = $this->ModelAdmin->countAllDosen();
+		$config['per_page'] = 7;
+		// $config['num_links'] = 1;
+
+		//styling
+		$config['full_tag_open'] = '<nav><ul class="pagination justify-content-center">';
+		$config['full_tag_close'] = '</ul></nav>';
+
+		$config['first_link'] = 'First';
+		$config['firs_tag_open'] = ' <li class="page-item">';
+		$config['first_tag_close'] = ' </li>';
+
+		$config['last_link'] = 'Last';
+		$config['last_tag_open'] = ' <li class="page-item">';
+		$config['last_tag_close'] = ' </li>';
+
+		$config['next_link'] = '&raquo';
+		$config['next_tag_open'] = ' <li class="page-item">';
+		$config['next_tag_close'] = ' </li>';
+
+		$config['prev_link'] = '&laquo';
+		$config['prev_tag_open'] = ' <li class="page-item">';
+		$config['prev_tag_close'] = ' </li>';
+
+		$config['cur_tag_open'] = ' <li class="page-item active"><a class="page-link" href="#">';
+		$config['cur_tag_close'] = ' </a></li>';
+
+		$config['num_tag_open'] = ' <li class="page-item ">';
+		$config['num_tag_close'] = ' </li>';
+
+		$config['attributes'] = array('class' => 'page-link');
+
+
+		//initialize
+		$this->pagination->initialize($config);
+
+		$data['start'] = $this->uri->segment(3);
+		$data['dosen'] = $this->ModelAdmin->getDosen($config['per_page'], $data['start']);
+		$keyword = $this->input->post('keyword');
+		$data['dosen'] = $this->ModelAdmin->searchDataDosen($keyword);
+		$this->load->view('templates/header');
+		$this->load->view('templates/sidebar');
+		$this->load->view('view-dosen', $data);
+		$this->load->view('templates/footer');
+	}
+
 	public function deletedsn($id)
 	{
 		$where = array('id' => $id);
