@@ -1,4 +1,4 @@
-	<br>
+<br>
 	<!-- Begin Page Content -->
 	<div class="container-fluid">
 
@@ -9,22 +9,22 @@
 			</div>
 			<div class="card-body">
 
-				<div class="row justify-content-center">
-					<div class="col-5">
-						<?php echo form_open('mahasiswa/searchmhs') ?>
-						<div class="input-group mb-3">
-							<input type="text" name="keyword" class="form-control" placeholder="Cari Mahasiswa">
-							<div class="input-group-append">
-								<button class="btn btn-outline-success" type="button">Cari</button>
-							</div>
+			<div class="row justify-content-center mt-4">
+			<div class="col-md-5">
+				<form action="<?= base_url('mahasiswa'); ?>" method="post">
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" placeholder="Cari data.. " name="keyword" autocomplete="off" autofocus>
+						<div class="input-group-append">
+							<input class="btn btn-primary" type="submit" name="submit">
 						</div>
-						<?php echo form_close()?>
-					</div>
+						</div>
+					</form>
 				</div>
+			</div>
 
 				<a class="btn btn-outline-secondary mb-3" align="center" data-toggle="modal" data-target="#newMahasiswa">Tambah Mahasiswa</a>
 
-				<center>
+				<div class="row justify-content-center">
 					<div class="col-4">
 						<?= $this->session->flashdata('message'); ?>
 						<?php if (validation_errors()) : ?>
@@ -33,8 +33,10 @@
 							</div>
 						<?php endif; ?>
 					</div>
-				</center>
-
+				</div>
+				
+				<h5>Hasil : <?= $total_rows; ?></h5>
+				
 				<table class="table table-hover text-dark">
 					<thead class="table-secondary">
 						<tr>
@@ -47,6 +49,13 @@
 						</tr>
 					</thead>
 					<tbody>
+						<?php if( empty($mahasiswa) ) : ?>
+							<tr>
+								<td colspan="6">
+									<div class="alert alert-danger" role="alert">Data tidak ditemukan!</div>
+								</td>
+							</tr>
+							<?php endif; ?>
 						<?php
 						foreach ($mahasiswa as $row) :
 						?>

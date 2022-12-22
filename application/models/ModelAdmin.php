@@ -24,36 +24,32 @@ class ModelAdmin extends CI_Model
 
 	public function editDataMahasiswa($where, $data)
 	{
-		$this->db->where($where);
-		$this->db->update('mahasiswa', $data);
-	}
-	
-	public function searchDataMahasiswa($keyword)
-	{
-		$this->db->select('*');
-		$this->db->from('mahasiswa');
-		$this->db->like('nim', $keyword);
-		$this->db->or_like('nama', $keyword);
-		$this->db->or_like('email', $keyword);
-		$this->db->or_like('jurusan', $keyword);
-		return $this->db->get()->result();
+			$this->db->where($where);
+			$this->db->update('mahasiswa', $data);
 	}
 
+	
 	function deleteDataMahasiswa($where, $table)
 	{
 		$this->db->where($where);
 		$this->db->delete($table);
 	}
 
-	public function getMahasiswa($limit, $start)
+	public function getMahasiswa($limit, $start, $keyword = null)
 	{
-		$query = $this->db->get('mahasiswa', $limit, $start);
-		return $query->result();
+		if($keyword) {
+			$this->db->like('nama', $keyword);
+			$this->db->or_like('email', $keyword);
+			$this->db->or_like('nim', $keyword);
+			$this->db->or_like('jurusan', $keyword);
+		}
+			$query = $this->db->get('mahasiswa', $limit, $start);
+			return $query->result();
 	}
 
 	public function countAllMahasiswa()
 	{
-		return $this->db->get('mahasiswa')->num_rows();
+			return $this->db->get('mahasiswa')->num_rows();
 	}
 
 	public function getDataDosen()
@@ -76,18 +72,8 @@ class ModelAdmin extends CI_Model
 
 	public function editDataDosen($where, $data)
 	{
-		$this->db->where($where);
-		$this->db->update('dosen', $data);
-	}
-
-	public function searchDataDosen($keyword)
-	{
-		$this->db->select('*');
-		$this->db->from('dosen');
-		$this->db->like('nip', $keyword);
-		$this->db->or_like('nama', $keyword);
-		$this->db->or_like('email', $keyword);
-		return $this->db->get()->result();
+			$this->db->where($where);
+			$this->db->update('dosen', $data);
 	}
 
 	public function deleteDataDosen($where, $table)
@@ -96,14 +82,19 @@ class ModelAdmin extends CI_Model
 		$this->db->delete($table);
 	}
 
-	public function getDosen($limit, $start)
+	public function getDosen($limit, $start, $keyword = null)
 	{
-		$query = $this->db->get('dosen', $limit, $start);
-		return $query->result();
+		if($keyword) {
+			$this->db->like('nama', $keyword);
+			$this->db->or_like('email', $keyword);
+			$this->db->or_like('nip', $keyword);
+		}
+			$query = $this->db->get('dosen', $limit, $start);
+			return $query->result();
 	}
 
-	public function countAllDosen()
-	{
+	public function countAllDosen() {
 		return $this->db->get('dosen')->num_rows();
 	}
+
 }
