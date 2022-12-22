@@ -24,21 +24,21 @@ class ModelAdmin extends CI_Model
 
 	public function editDataMahasiswa($where, $data)
 	{
-			$this->db->where($where);
-			$this->db->update('mahasiswa', $data);
-	}
-
-	public function searchDataMahasiswa($nama)
-	{
-		if(!$nama) {
-			return null;
-		}
-
-		$this->db->like('nama', $nama);
-		$query = $this->db->get('mahasiswa');
-		return $query->result();
+		$this->db->where($where);
+		$this->db->update('mahasiswa', $data);
 	}
 	
+	public function searchDataMahasiswa($keyword)
+	{
+		$this->db->select('*');
+		$this->db->from('mahasiswa');
+		$this->db->like('nim', $keyword);
+		$this->db->or_like('nama', $keyword);
+		$this->db->or_like('email', $keyword);
+		$this->db->or_like('jurusan', $keyword);
+		return $this->db->get()->result();
+	}
+
 	function deleteDataMahasiswa($where, $table)
 	{
 		$this->db->where($where);
@@ -47,13 +47,13 @@ class ModelAdmin extends CI_Model
 
 	public function getMahasiswa($limit, $start)
 	{
-			$query = $this->db->get('mahasiswa', $limit, $start);
-			return $query->result();
+		$query = $this->db->get('mahasiswa', $limit, $start);
+		return $query->result();
 	}
 
 	public function countAllMahasiswa()
 	{
-			return $this->db->get('mahasiswa')->num_rows();
+		return $this->db->get('mahasiswa')->num_rows();
 	}
 
 	public function getDataDosen()
@@ -76,8 +76,18 @@ class ModelAdmin extends CI_Model
 
 	public function editDataDosen($where, $data)
 	{
-			$this->db->where($where);
-			$this->db->update('dosen', $data);
+		$this->db->where($where);
+		$this->db->update('dosen', $data);
+	}
+
+	public function searchDataDosen($keyword)
+	{
+		$this->db->select('*');
+		$this->db->from('dosen');
+		$this->db->like('nip', $keyword);
+		$this->db->or_like('nama', $keyword);
+		$this->db->or_like('email', $keyword);
+		return $this->db->get()->result();
 	}
 
 	public function deleteDataDosen($where, $table)
@@ -88,12 +98,12 @@ class ModelAdmin extends CI_Model
 
 	public function getDosen($limit, $start)
 	{
-			$query = $this->db->get('dosen', $limit, $start);
-			return $query->result();
+		$query = $this->db->get('dosen', $limit, $start);
+		return $query->result();
 	}
 
-	public function countAllDosen() {
+	public function countAllDosen()
+	{
 		return $this->db->get('dosen')->num_rows();
 	}
-
 }
