@@ -65,7 +65,7 @@
 									<hr>
 
 									<div class="text-center">
-										<a class="small" href="<?= base_url('auth'); ?>">Sudah punya akun ? Login!</a>
+										<a class="small" href="<?= base_url('auth/admin'); ?>">Sudah punya akun ? Login!</a>
 									</div>
 								</div>
 							</div>

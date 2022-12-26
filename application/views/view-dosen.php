@@ -2,7 +2,6 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
-	<<<<<<< HEAD <!-- DataTales Example -->
 		<div class="card shadow mb-4">
 			<div class="card-header py-3">
 				<h3 class="m-0 font-weight-bold text-secondary" align="center">Data Dosen</h3>
@@ -22,7 +21,7 @@
 					</div>
 				</div>
 
-				<a class="btn btn-outline-secondary mb-3" align="center" data-toggle="modal" data-target="#newMahasiswa">Tambah Dosen</a>
+				<a class="btn btn-outline-secondary mb-3" align="center" data-toggle="modal" data-target="#newDosen">Tambah Dosen</a>
 
 				<div class="row justify-content-center">
 					<div class="col-4">
@@ -95,7 +94,7 @@
 			<form action="<?= base_url('dosen/tambahdsn'); ?>" method="post">
 				<div class="modal-body">
 					<div class="form-group">
-						<input type="number" class="form-control mb-2" id="nip" name="nim" placeholder="NIP" required>
+						<input type="number" class="form-control mb-2" id="nip" name="nip" placeholder="NIP" required>
 						<input type="text" class="form-control mb-2" id="nama" name="nama" placeholder="Nama Lengkap" required>
 						<input type="email" class="form-control mb-2" id="email" name="email" placeholder="Email" required>
 					</div>

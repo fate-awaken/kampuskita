@@ -19,7 +19,7 @@
 
 									<?= $this->session->flashdata('message'); ?>
 
-									<form action="<?= base_url('auth') ?>" method="POST" class="user">
+									<form action="<?= base_url('auth/admin') ?>" method="POST" class="user">
 										<div class="form-group">
 											<input type="text" class="form-control form-control-user" id="username" name="username" placeholder="Username">
 											<?= form_error('username', '<small class="text-danger pl-3">', '</small> '); ?>

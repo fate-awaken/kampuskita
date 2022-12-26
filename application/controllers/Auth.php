@@ -9,7 +9,7 @@ class Auth extends CI_Controller
 		$this->load->library('form_validation');
 	}
 
-	public function index()
+	public function admin()
 	{
 		$this->form_validation->set_rules('username', 'Username', 'trim|required');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required');
@@ -36,11 +36,11 @@ class Auth extends CI_Controller
 				redirect('home');
 			} else {
 				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong Password!</div>');
-				redirect('auth');
+				redirect('auth/admin');
 			}
 		} else {
 			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong Username!</div>');
-			redirect('auth');
+			redirect('auth/admin');
 		}
 	}
 
@@ -75,7 +75,7 @@ class Auth extends CI_Controller
 
 				$this->db->insert('admin', $data);
 				$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been created. Please Login</div>');
-				redirect('auth');
+				redirect('auth/admin');
 			} elseif ($this->input->post('accountType') == 'Mahasiswa') {
 
 				$role_id = 2;
@@ -89,8 +89,9 @@ class Auth extends CI_Controller
 
 				$this->db->insert('user', $data);
 				$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been created. Please Login</div>');
-				redirect('auth/user');
+				redirect('auth');
 			} elseif ($this->input->post('accountType') == 'Dosen') {
+				
 				$role_id = 3;
 				$data = [
 					'username' => htmlspecialchars($this->input->post('username')),
@@ -102,13 +103,13 @@ class Auth extends CI_Controller
 
 				$this->db->insert('user', $data);
 				$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been created. Please Login</div>');
-				redirect('auth/user');
+				redirect('auth');
 			}
 		}
 	}
 
 
-	public function user()
+	public function index()
 	{
 		$this->form_validation->set_rules('username', 'Username', 'trim|required');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required');
@@ -138,23 +139,32 @@ class Auth extends CI_Controller
 				} elseif ($user['role_id'] == 3) {
 					redirect('user/loadPageDosen');
 				}
-				redirect('user/user');
+				redirect('auth');
 			} else {
 				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password!</div>');
-				redirect('auth/user');
+				redirect('auth');
 			}
 		} else {
 			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email not registered!</div>');
-			redirect('auth/user');
+			redirect('auth');
 		}
 	}
 
-	public function logout()
+	public function logoutUser()
 	{
 		$this->session->unset_userdata('email');
 		$this->session->unset_userdata('role_id');
 
 		$this->session->set_flashdata('message', '<script>alert("Your have been logged out");</script>');
-		redirect('auth/user');
+		redirect('auth');
+	}
+
+	public function logoutAdmin()
+	{
+		$this->session->unset_userdata('email');
+		$this->session->unset_userdata('role_id');
+
+		$this->session->set_flashdata('message', '<script>alert("Your have been logged out");</script>');
+		redirect('auth/admin');
 	}
 }

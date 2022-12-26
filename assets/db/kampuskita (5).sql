@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 25, 2022 at 06:38 AM
+-- Generation Time: Dec 26, 2022 at 04:21 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -70,7 +70,18 @@ INSERT INTO `dosen` (`id`, `nama`, `nip`, `email`) VALUES
 (10, 'Amir', 10000003, 'jamur@gmail.com'),
 (11, 'asd', 10000002, 'jamur@gmail.com'),
 (14, 'Aditya Ramadhan', 10000321, 'diasspratamaa24@gmail.com'),
-(15, 'Fikri', 10000002, 'protegas@gmail.com');
+(15, 'Fikri', 10000002, 'protegas@gmail.com'),
+(16, 'asd', 10000003, 'hana@gmail.com'),
+(17, 'asd', 10000003, 'hana@gmail.com'),
+(18, 'Raihana', 10000003, 'jamur@gmail.com'),
+(19, 'Raihana', 10000003, 'diasspratamaa24edu@gmail.com'),
+(20, 'asd', 10000003, 'asd@gmail.com'),
+(21, 'Raihana', 10000003, 'asd@gmail.com'),
+(22, 'Raihana', 10000003, 'jamur@gmail.com'),
+(23, 'Jamuruu', 10000003, 'dias@gmail.com'),
+(24, 'Dias Pratama Yasir', 10000003, 'jamur@gmail.com'),
+(25, 'Raihana', 10000003, 'jamur@gmail.com'),
+(26, 'asd', 10000003, 'jamur@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -103,7 +114,17 @@ INSERT INTO `mahasiswa` (`id`, `nama`, `nim`, `email`, `jurusan`) VALUES
 (55, 'Aditya Ramadhan', '00000002', 'adit@gmail.com', 'Rekayasa Perangkat Lunak'),
 (56, 'Fiqri Maulana Syach', '00000122', 'protegas@gmail.com', 'Graphic Engineering'),
 (57, 'Amir', '00000002', 'amir@gmail.com', 'Management'),
-(58, 'Bintang', '00000124', 'bintang@gmail.com', 'Rekayasa Perangkat Lunak');
+(58, 'Bintang', '00000124', 'bintang@gmail.com', 'Rekayasa Perangkat Lunak'),
+(59, 'asd', '00000012', 'hana@gmail.com', 'Sastra Gorong Gorong'),
+(60, 'Dias Pratama Yasir', '10210069', 'jamur@gmail.com', 'Sastra Gorong Gorong'),
+(61, 'asd', '00000002', 'jamur@gmail.com', 'Sastra Gorong Gorong'),
+(62, 'Dias Pratama Yasir', '00000012', 'hana@gmail.com', 'Teknik Gorong Gorong'),
+(63, 'asd', '00000002', 'hana@gmail.com', 'asd'),
+(64, 'Dias Pratama Yasir', '00000001', 'hana@gmail.com', 'asd'),
+(65, 'asd', '00000013', 'asd@gmail.com', 'Rekayasa Perangkat Lunak'),
+(66, 'Raihana', '00000012', 'jamur@gmail.com', 'Teknik Gorong Gorong'),
+(67, 'asd', '00000012', 'hana@gmail.com', 'asd'),
+(68, 'asd', '00000012', 'jamur@gmail.com', 'Sastra Gorong Gorong');
 
 -- --------------------------------------------------------
 
@@ -171,13 +192,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `dosen`
 --
 ALTER TABLE `dosen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `user`

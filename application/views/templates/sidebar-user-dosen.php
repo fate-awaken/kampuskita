@@ -42,7 +42,7 @@
 			<hr class="sidebar-divider my-0">
 
 			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url('auth/logout')?>">
+				<a class="nav-link" href="<?= base_url('auth/logoutUser')?>">
 					<i class="fas fa-sign-out-alt"></i>
 					<span>Log Out</span>
 				</a>
