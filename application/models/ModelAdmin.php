@@ -15,6 +15,11 @@ class ModelAdmin extends CI_Model
 		$this->db->insert('mahasiswa', $data);
 	}
 
+	public function insertAkunMahasiswa($data)
+	{
+		$this->db->insert('user', $data);
+	}
+
 	public function getDataMahasiswaDetail($nim)
 	{
 		$this->db->where('nim', $nim);
@@ -75,6 +80,11 @@ class ModelAdmin extends CI_Model
 		$this->db->insert('dosen', $data);
 	}
 
+	public function insertAkunDosen($data)
+	{
+		$this->db->insert('user', $data);
+	}
+
 	public function getDataDosenDetail($nip)
 	{
 		$this->db->where('nip', $nip);
@@ -106,6 +116,7 @@ class ModelAdmin extends CI_Model
 
 	public function getDosen($limit, $start, $keyword = null)
 	{
+		$this->db->order_by('id', 'DESC');
 		if ($keyword) {
 			$this->db->like('nama', $keyword);
 			$this->db->or_like('email', $keyword);

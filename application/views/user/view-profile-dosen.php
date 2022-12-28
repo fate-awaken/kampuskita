@@ -36,8 +36,8 @@
 				<!-- Nav Item - User Information -->
 				<li class="nav-item dropdown no-arrow">
 					<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<span class="mr-2 d-none d-lg-inline text-gray-600 small">Dosen</span>
-						<img class="img-profile rounded-circle" src="<?= base_url('assets/')?>img/undraw_profile_1.svg">
+						<span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $dosen['nama']; ?></span>
+						<img class="img-profile rounded-circle" src="<?= base_url('assets/') ?>img/undraw_profile_2.svg">
 					</a>
 					<!-- Dropdown - User Information -->
 					<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -52,16 +52,88 @@
 
 		</nav>
 
-		<h2>Profile</h2>
+		<h2><?= $title; ?></h2>
 
-		<div class="mx-auto">
-			<center>
-				<img src="<?= base_url('assets/'); ?>img/undraw_profile_1.svg" class="mx-auto" width="320px" alt="profile">
-			</center>
+
+
+
+		<div class="content mt-5">
+			<div class="row mt-5">
+				<div class="col-md-3">
+					<div class="row justify-content-center ml-5">
+						<img src="<?= base_url('assets/'); ?>img/undraw_profile_2.svg" class="mx-auto" width="320px" alt="profile">
+						<h2 class="text-center mt-2"><?= $dosen['nama']; ?></h2>
+					</div>
+				</div>
+				<div class="col mt-5">
+
+					<form action="<?= base_url(''); ?>" method="post">
+						<div class="modal-body">
+							<div class="form-group">
+								<table class="table table-borderless">
+
+									<tbody>
+										<tr>
+											<td>
+												<h4 class="mt-1 text-center">NIP</h4>
+											</td>
+											<td><input type="number" class="form-control w-50 mr-5" id="nip" name="nip" placeholder="NIP" value="<?= $dosen['nip']; ?>" readonly></td>
+										</tr>
+										<tr>
+											<td>
+												<h4 class="mt-1 text-center">Nama</h4>
+											</td>
+											<td><input type="text" class="form-control mb-2 w-50" id="nama" name="nama" placeholder="Nama" value="<?= $dosen['nama']; ?>" readonly></td>
+										</tr>
+										<tr>
+											<td>
+												<h4 class="mt-1 text-center">email</h4>
+											</td>
+											<td><input type="email" class="form-control mb-2 w-50" id="email" name="email" placeholder="Email" value="<?= $dosen['email']; ?>" readonly></td>
+										</tr>
+									</tbody>
+								</table>
+
+							</div>
+						</div>
+					</form>
+				</div>
+
+			</div>
+			<br><br><br><br>
+			<div class="content mt-5">
+				<div class="row mt-5">
+					<h3>Change Password</h3>
+					<div class="col-lg-4 mt-5">
+						<?= $this->session->flashdata('message'); ?>
+						<form action="<?= base_url('user/changePasswordDosen'); ?>" method="post">
+							<div class="form-group">
+								<label for="current_password">Password Lama</label>
+								<input type="password" class="form-control" id="current_password" name="current_password">
+								<?= form_error('current_password', '<small class="text-danger pl-3">', '</small> '); ?>
+							</div>
+							<div class="form-group">
+								<label for="new_password1">Password Baru</label>
+								<input type="password" class="form-control" id="new_password1" name="new_password1">
+								<?= form_error('new_password1', '<small class="text-danger pl-3">', '</small> '); ?>
+							</div>
+							<div class="form-group">
+								<label for="new_password2">Konfirmasi Password Baru</label>
+								<input type="password" class="form-control" id="new_password2" name="new_password2">
+								<?= form_error('new_password2', '<small class="text-danger pl-3">', '</small> '); ?>
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary">Ubah Password</button>
+							</div>
+					</div>
+				</div>
+			</div>
+
+
 			<br><br>
-			<center>
-				<h4>Dosen</h4>
-			</center>
+
+
+
 		</div>
 	</div>
 </div>

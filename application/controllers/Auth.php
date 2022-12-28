@@ -79,34 +79,6 @@ class Auth extends CI_Controller
 				$this->db->insert('admin', $data);
 				$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been created. Please Login</div>');
 				redirect('auth/admin');
-			} elseif ($this->input->post('accountType') == 'Mahasiswa') {
-
-				$role_id = 2;
-				$data = [
-					'username' => htmlspecialchars($this->input->post('username')),
-					'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
-					'email' => htmlspecialchars($this->input->post('email')),
-					'role_id' => $role_id,
-					'date_created' => time()
-				];
-
-				$this->db->insert('user', $data);
-				$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been created. Please Login</div>');
-				redirect('auth');
-			} elseif ($this->input->post('accountType') == 'Dosen') {
-
-				$role_id = 3;
-				$data = [
-					'username' => htmlspecialchars($this->input->post('username')),
-					'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
-					'email' => htmlspecialchars($this->input->post('email')),
-					'role_id' => $role_id,
-					'date_created' => time()
-				];
-
-				$this->db->insert('user', $data);
-				$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been created. Please Login</div>');
-				redirect('auth');
 			}
 		}
 	}
@@ -132,23 +104,24 @@ class Auth extends CI_Controller
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
 
-		$mahasiswa = $this->db->get_where('mahasiswa', ['email' => $email])->row_array();
+		$user = $this->db->get_where('user', ['email' => $email])->row_array();
 
 		//jika usernya ada
-		if ($mahasiswa) {
+		if ($user) {
 			//jika user aktif
-			if ($mahasiswa['is_active'] == 1) {
+			if ($user['is_active'] == 1) {
 				//cek paswordnya
-				if (password_verify($password, $mahasiswa['password'])) {
+				if (password_verify($password, $user['password'])) {
 					$data = [
-						'email' => $mahasiswa['email'],
-						'role_id' => $mahasiswa['role_id']
+						'email' => $user['email'],
+						'role_id' => $user['role_id']
 					];
 					$this->session->set_userdata($data);
-					if ($mahasiswa['role_id'] == 1) {
-						redirect('home');
-					} else {
+
+					if ($user['role_id'] == 2) {
 						redirect('user/loadPageMahasiswa');
+					} else if ($user['role_id'] == 3) {
+						redirect('user/loadPageDosen');
 					}
 				} else {
 					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password</div>');

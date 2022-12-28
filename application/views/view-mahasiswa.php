@@ -130,7 +130,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="newMenuModalLabel">Edit Data<?= $row->nama; ?></h5>
+					<h5 class="modal-title" id="newMenuModalLabel">Edit Data <?= $row->nama; ?></h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -143,7 +143,7 @@
 							<input type="text" class="form-control mb-2" id="nama" name="nama" placeholder="Nama" value="<?= $row->nama; ?>" required>
 							<input type="email" class="form-control mb-2" id="email" name="email" placeholder="Email" value="<?= $row->email; ?>" required readonly>
 							<input type="text" class="form-control mb-2" id="jurusan" name="jurusan" placeholder="Jurusan" value="<?= $row->jurusan; ?>" required>
-							<input type="text" class="form-control mb-2" id="password" name="password" placeholder="Password" value="<?= $row->password; ?>" required>
+							<input type="text" class="form-control mb-2" id="password" name="password" placeholder="Password" value="<?= $row->password; ?>" required readonly>
 							<input type="number" class="form-control mb-2" id="role_id" name="role_id" value="2" readonly>
 							<div class="form-check">
 								<input class="form-check-input" type="checkbox" name="is_active" id="is_active" value="1" checked>
@@ -169,7 +169,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="newMenuModalLabel">Hapus <?= $row->nama; ?> ?</h5>
+					<h5 class="modal-title" id="newMenuModalLabel">Hapus Data <?= $row->nama; ?></h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>

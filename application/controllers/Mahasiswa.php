@@ -86,7 +86,15 @@ class Mahasiswa extends CI_Controller
 
 			);
 
+			$dataAkun = array(
+				'email' => $email,
+				'password' => $password,
+				'role_id' => $role_id,
+				'is_active' => $is_active
+			);
+
 			$this->ModelAdmin->insertDataMahasiswa($data);
+			$this->ModelAdmin->insertAkunMahasiswa($dataAkun);
 
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data telah berhasil ditambahkan!</div>');
 

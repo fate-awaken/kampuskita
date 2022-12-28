@@ -4,7 +4,7 @@
 		<ul class="navbar-nav sidebar sidebar-dark accordion" style="background-color: #395144;" id="accordionSidebar">
 
 			<!-- Sidebar - Brand -->
-			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('user/loadPageDosen');?>">
+			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('user/loadPageDosen'); ?>">
 				<div class="sidebar-brand-icon">
 					<i class="fas fa-fw fa-book"></i>
 				</div>
@@ -15,7 +15,7 @@
 			<hr class="sidebar-divider my-0">
 
 			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url('user/loadPageDosen');?>">
+				<a class="nav-link" href="<?= base_url('user/loadPageDosen'); ?>">
 					<i class="fas fa-fw fa-tachometer-alt"></i>
 					<span>Dashboard</span></a>
 			</li>
@@ -23,18 +23,9 @@
 			<hr class="sidebar-divider my-0">
 
 			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url('user/loadKelasDosenPage')?>">
+				<a class="nav-link" href="<?= base_url('user/loadKelasDosenPage') ?>">
 					<i class="fas fa-book"></i>
 					<span>Kelas</span>
-				</a>
-			</li>
-			
-			<hr class="sidebar-divider my-0">
-
-			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url('user/loadNilaiDosenPage')?>">
-					<i class="fas fa-sign-out-alt"></i>
-					<span>Nilai</span>
 				</a>
 			</li>
 
@@ -42,7 +33,7 @@
 			<hr class="sidebar-divider my-0">
 
 			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url('auth/logoutUser')?>">
+				<a class="nav-link" href="<?= base_url('auth/logoutUser') ?>">
 					<i class="fas fa-sign-out-alt"></i>
 					<span>Log Out</span>
 				</a>
