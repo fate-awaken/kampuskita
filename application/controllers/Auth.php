@@ -37,7 +37,7 @@ class Auth extends CI_Controller
 		if ($admin) {
 			if (password_verify($password, $admin['password'])) {
 				$data = [
-					'username' => $admin['username'],
+					'email' => $admin['email'],
 					'role_id' => $admin['role_id']
 				];
 				$this->session->set_userdata($data);
@@ -72,13 +72,11 @@ class Auth extends CI_Controller
 			$this->load->view('view-register');
 			$this->load->view('templates/footer');
 		} else {
-
-
 			$role_id = 1;
 			$data = [
 				'username' => htmlspecialchars($this->input->post('username')),
 				'email' => htmlspecialchars($this->input->post('email')),
-				'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+				'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
 				'role_id' => $role_id,
 				'date_created' => time()
 			];
@@ -154,7 +152,8 @@ class Auth extends CI_Controller
 
 	public function logoutAdmin()
 	{
-		$this->session->unset_userdata('username');
+		$this->session->unset_userdata('email');
+		$this->session->unset_userdata('role_id');
 
 		$this->session->set_flashdata('message', '<script>alert("Your have been logged out");</script>');
 		redirect('auth/admin');
