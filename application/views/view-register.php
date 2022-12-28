@@ -32,35 +32,14 @@
 											</div>
 										</div>
 
-										<div class="form-group ml-3">
-											<label class="form-label">Tipe Akun :</label>
-											<div class="form-check">
-												<input class="form-check-input" type="radio" name="accountType" id="type1" value="Admin">
-												<label class="form-check-label" for="type1">
-													Admin
-												</label>
-											</div>
-											<div class="form-check">
-												<input class="form-check-input" type="radio" name="accountType" id="type2" value="Mahasiswa">
-												<label class="form-check-label" for="type2">
-													Mahasiswa
-												</label>
-											</div>
-											<div class="form-check">
-												<input class="form-check-input" type="radio" name="accountType" id="type3" value="Dosen">
-												<label class="form-check-label" for="type3">
-													Dosen
-												</label>
-											</div>
-										</div>
 
-										<br>
+										<div class="row justify-content-center mt-5">
 
-										<center>
 											<button type="submit" class="btn btn-dark btn-user btn-block col-6">
 												Register Account
 											</button>
-										</center>
+										</div>
+
 									</form>
 									<hr>
 

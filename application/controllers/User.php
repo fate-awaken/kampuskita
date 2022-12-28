@@ -44,7 +44,9 @@ class User extends CI_Controller
 		}
 
 		$this->form_validation->set_rules('current_password', 'Current Password', 'required|trim');
-		$this->form_validation->set_rules('new_password1', 'New Password', 'required|trim|min_length[3]|matches[new_password2]');
+		$this->form_validation->set_rules('new_password1', 'New Password', 'required|trim|min_length[3]|matches[new_password2]', [
+			'min_length' => 'Password Terlalu pendek!'
+		]);
 		$this->form_validation->set_rules('new_password2', 'Confirm New Password', 'required|trim|min_length[3]|matches[new_password1]');
 
 		if ($this->form_validation->run() == false) {
@@ -86,11 +88,11 @@ class User extends CI_Controller
 		$this->load->view('user/view-kelas-mahasiswa.php');
 		$this->load->view('templates/footer');
 	}
-	
+
 	public function loadPageDosen()
 	{
 		if ($this->session->userdata('email')) {
-			
+
 			$data['dosen'] = $this->db->get_where('dosen', ['email' => $this->session->userdata('email')])->row_array();
 		}
 		$data['title'] = "Dashboard Dosen - KampusKita";
@@ -112,7 +114,7 @@ class User extends CI_Controller
 		$this->load->view('user/view-profile-dosen.php');
 		$this->load->view('templates/footer');
 	}
-	
+
 	public function loadKelasDosenPage()
 	{
 		$data['title'] = "Daftar Kelas - KampusKita";
@@ -121,7 +123,7 @@ class User extends CI_Controller
 		$this->load->view('user/view-kelas-dosen.php');
 		$this->load->view('templates/footer');
 	}
-	
+
 	public function loadNilaiDosenPage()
 	{
 		$data['title'] = "Daftar Nilai - KampusKita";
