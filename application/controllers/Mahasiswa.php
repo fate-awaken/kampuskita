@@ -7,6 +7,7 @@ class Mahasiswa extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('ModelAdmin');
+		$this->load->model('ModelUser');
 	}
 
 	public function index()
@@ -55,7 +56,7 @@ class Mahasiswa extends CI_Controller
 		$title['title'] = 'Data Mahasiswa';
 
 		$this->form_validation->set_rules('nim', 'NIM', 'required|trim|is_unique[mahasiswa.nim]', [
-			'is_unique' => 'Nama Sudah Terdaftar!'
+			'is_unique' => 'NIM Sudah Terdaftar!'
 		]);
 		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[mahasiswa.email]', [
 			'is_unique' => 'Email Sudah Terdaftar!'
@@ -124,11 +125,23 @@ class Mahasiswa extends CI_Controller
 
 		];
 
+		$dataAkun = [
+			'email' => $email,
+			'password' => $password,
+			'role_id' => $role_id,
+			'is_active' => $is_active
+		];
+
+		$whereAkun = [
+			'email' => $email
+		];
+
 		$where = [
 			'id' => $id
 		];
 
 		$this->ModelAdmin->editDataMahasiswa($where, $data, 'mahasiswa');
+		$this->ModelAdmin->editAkunMahasiswa($whereAkun, $dataAkun, 'user 	');
 
 		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data telah berhasil diubah!</div>');
 

@@ -34,6 +34,13 @@ class ModelAdmin extends CI_Model
 		$this->db->update('mahasiswa', $data);
 	}
 
+	public function editAkunMahasiswa($where, $dataAkun)
+	{
+
+		$this->db->where($where);
+		$this->db->update('user', $dataAkun);
+	}
+
 	public function searchDataMahasiswa($keyword)
 	{
 		$this->db->select('*');
@@ -96,6 +103,12 @@ class ModelAdmin extends CI_Model
 	{
 		$this->db->where($where);
 		$this->db->update('dosen', $data);
+	}
+
+	public function editAkunDosen($where, $data)
+	{
+		$this->db->where($where);
+		$this->db->update('user', $data);
 	}
 
 	public function searchDataDosen($keyword)

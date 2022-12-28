@@ -119,11 +119,23 @@ class Dosen extends CI_Controller
 
 		];
 
+		$dataAkun = [
+			'email' => $email,
+			'password' => $password,
+			'role_id' => $role_id,
+			'is_active' => $is_active
+		];
+
+		$whereAkun = [
+			'email' => $email
+		];
+
 		$where = [
 			'id' => $id
 		];
 
 		$this->ModelAdmin->editDataDosen($where, $data, 'dosen');
+		$this->ModelAdmin->editAkunDosen($whereAkun, $dataAkun, 'user');
 
 		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data telah berhasil diubah!</div>');
 

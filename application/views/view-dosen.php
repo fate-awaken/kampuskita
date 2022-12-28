@@ -139,7 +139,7 @@
 							<input type="number" class="form-control mb-2" id="nip" name="nip" placeholder="NIP" value="<?= $row->nip; ?>" required readonly>
 							<input type="text" class="form-control mb-2" id="nama" name="nama" placeholder="Nama" value="<?= $row->nama; ?>" required>
 							<input type="email" class="form-control mb-2" id="email" name="email" placeholder="Email" value="<?= $row->email; ?>" required readonly>
-							<input type="text" class="form-control mb-2" id="password" name="password" placeholder="Password" value="<?= $row->password; ?>" required readonly>
+							<input type="text" class="form-control mb-2" id="password" name="password" placeholder="Password" value="<?= $row->password; ?>" required>
 							<input type="number" class="form-control mb-2" id="role_id" name="role_id" value="3" readonly>
 							<div class="form-check">
 								<input class="form-check-input" type="checkbox" name="is_active" id="is_active" value="1" checked>
