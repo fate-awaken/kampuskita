@@ -37,7 +37,7 @@
 				<!-- Nav Item - User Information -->
 				<li class="nav-item dropdown no-arrow">
 					<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<span class="mr-2 d-none d-lg-inline text-gray-600 small">Mahasiswa</span>
+						<span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $mahasiswa['nama']; ?></span>
 						<img class="img-profile rounded-circle" src="<?= base_url('assets/') ?>img/undraw_profile_2.svg">
 					</a>
 					<!-- Dropdown - User Information -->
@@ -59,7 +59,46 @@
 		</nav>
 		<!-- End of Topbar -->
 
-		<h2>Selamat Datang Mahasiswa</h2>
+		<h2>Selamat Datang <?= $mahasiswa['nama']; ?></h2>
+
+
+		<div class="row">
+			<div class="col-md-5">
+				<form action="<?= base_url(''); ?>" method="post">
+					<div class="modal-body">
+						<div class="form-group">
+							<table class="table">
+
+								<tbody>
+									<tr>
+										<td>NIM</td>
+										<td><input type="number" class="form-control mb-2" id="nim" name="nim" placeholder="NIM" value="<?= $mahasiswa['nim']; ?>" readonly></td>
+									</tr>
+									<tr>
+										<td>Nama</td>
+										<td><input type="text" class="form-control mb-2" id="nama" name="nama" placeholder="Nama" value="<?= $mahasiswa['nama']; ?>" readonly></td>
+									</tr>
+									<tr>
+										<td>Email</td>
+										<td><input type="email" class="form-control mb-2" id="email" name="email" placeholder="Email" value="<?= $mahasiswa['email']; ?>" readonly></td>
+									</tr>
+									<tr>
+										<td>Jurusan</td>
+										<td><input type="text" class="form-control mb-2" id="jurusan" name="jurusan" placeholder="Jurusan" value="<?= $mahasiswa['jurusan']; ?>" readonly></td>
+									</tr>
+
+								</tbody>
+							</table>
+
+
+
+
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+
 		<p>Silahkan mengakses fitur dibawah ini</p>
 
 		<div class="row">

@@ -25,10 +25,10 @@ class ModelAdmin extends CI_Model
 	public function editDataMahasiswa($where, $data)
 	{
 
-			$this->db->where($where);
-			$this->db->update('mahasiswa', $data);
+		$this->db->where($where);
+		$this->db->update('mahasiswa', $data);
 	}
-	
+
 	public function searchDataMahasiswa($keyword)
 	{
 		$this->db->select('*');
@@ -48,14 +48,15 @@ class ModelAdmin extends CI_Model
 
 	public function getMahasiswa($limit, $start, $keyword = null)
 	{
-		if($keyword) {
+		$this->db->order_by('id', 'DESC');
+		if ($keyword) {
 			$this->db->like('nama', $keyword);
 			$this->db->or_like('email', $keyword);
 			$this->db->or_like('nim', $keyword);
 			$this->db->or_like('jurusan', $keyword);
 		}
-			$query = $this->db->get('mahasiswa', $limit, $start);
-			return $query->result();
+		$query = $this->db->get('mahasiswa', $limit, $start);
+		return $query->result();
 	}
 
 	public function countAllMahasiswa()
@@ -105,13 +106,13 @@ class ModelAdmin extends CI_Model
 
 	public function getDosen($limit, $start, $keyword = null)
 	{
-		if($keyword) {
+		if ($keyword) {
 			$this->db->like('nama', $keyword);
 			$this->db->or_like('email', $keyword);
 			$this->db->or_like('nip', $keyword);
 		}
-			$query = $this->db->get('dosen', $limit, $start);
-			return $query->result();
+		$query = $this->db->get('dosen', $limit, $start);
+		return $query->result();
 	}
 
 	public function countAllDosen()

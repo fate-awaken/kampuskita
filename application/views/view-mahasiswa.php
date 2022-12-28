@@ -45,6 +45,8 @@
 						<th scope="col">Nama</th>
 						<th scope="col">Email</th>
 						<th scope="col">Jurusan</th>
+						<th scope="col">Role id</th>
+						<th scope="col">Is active</th>
 						<th scope="col">Action</th>
 					</tr>
 				</thead>
@@ -66,6 +68,8 @@
 							<td><?= $row->nama; ?></td>
 							<td><?= $row->email; ?></td>
 							<td><?= $row->jurusan; ?></td>
+							<td><?= $row->role_id; ?></td>
+							<td><?= $row->is_active; ?></td>
 							<td>
 								<a class="badge badge-success" data-toggle="modal" data-target="#editMhs<?= $row->id; ?>" href=""><i class="fas fa-fw fa-edit"></i></a>
 								<a class="badge badge-danger" data-toggle="modal" data-target="#deleteMhs<?= $row->id; ?>"><i class="fas fa-fw fa-trash"></i></a>
@@ -101,6 +105,14 @@
 						<input type="text" class="form-control mb-2" id="nama" name="nama" placeholder="Nama Lengkap" required>
 						<input type="email" class="form-control mb-2" id="email" name="email" placeholder="Email" required>
 						<input type="text" class="form-control mb-2" id="jurusan" name="jurusan" placeholder="Jurusan" required>
+						<input type="text" class="form-control mb-2" id="password" name="password" placeholder="Password" required>
+						<input type="number" class="form-control mb-2" id="role_id" name="role_id" value="2" readonly>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" name="is_active" id="is_active" value="1" checked>
+							<label class="form-check-label" for="is_active">
+								Active?
+							</label>
+						</div>
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -126,11 +138,19 @@
 				<form action="<?= base_url('mahasiswa/editmhs'); ?>" method="post">
 					<div class="modal-body">
 						<div class="form-group">
-							<input type="hidden" class="form-control mb-2" id="id" name="id" placeholder="id" value="<?= $row->id; ?>">
-							<input type="number" class="form-control mb-2" id="nim" name="nim" placeholder="NIM" value="<?= $row->nim; ?>">
-							<input type="text" class="form-control mb-2" id="nama" name="nama" placeholder="Nama" value="<?= $row->nama; ?>">
-							<input type="email" class="form-control mb-2" id="email" name="email" placeholder="Email" value="<?= $row->email; ?>">
-							<input type="text" class="form-control mb-2" id="jurusan" name="jurusan" placeholder="Jurusan" value="<?= $row->jurusan; ?>">
+							<input type="hidden" class="form-control mb-2" id="id" name="id" placeholder="id" value="<?= $row->id; ?>" required>
+							<input type="number" class="form-control mb-2" id="nim" name="nim" placeholder="NIM" value="<?= $row->nim; ?>" required readonly>
+							<input type="text" class="form-control mb-2" id="nama" name="nama" placeholder="Nama" value="<?= $row->nama; ?>" required>
+							<input type="email" class="form-control mb-2" id="email" name="email" placeholder="Email" value="<?= $row->email; ?>" required readonly>
+							<input type="text" class="form-control mb-2" id="jurusan" name="jurusan" placeholder="Jurusan" value="<?= $row->jurusan; ?>" required>
+							<input type="text" class="form-control mb-2" id="password" name="password" placeholder="Password" value="<?= $row->password; ?>" required>
+							<input type="number" class="form-control mb-2" id="role_id" name="role_id" value="2" readonly>
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" name="is_active" id="is_active" value="1" checked>
+								<label class="form-check-label" for="is_active">
+									Active?
+								</label>
+							</div>
 						</div>
 					</div>
 					<div class="modal-footer">

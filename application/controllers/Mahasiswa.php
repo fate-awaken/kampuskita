@@ -8,7 +8,7 @@ class Mahasiswa extends CI_Controller
 		parent::__construct();
 		$this->load->model('ModelAdmin');
 	}
- 
+
 	public function index()
 	{
 		$queryAllMahasiswa = $this->ModelAdmin->getDataMahasiswa();
@@ -18,11 +18,11 @@ class Mahasiswa extends CI_Controller
 		$config['base_url'] = 'http://localhost/kampuskita/mahasiswa/index';
 
 		//ambil data keyword
-		if($this->input->post('submit')) {
+		if ($this->input->post('submit')) {
 			$data['keyword'] = $this->input->post('keyword');
 			$this->session->set_userdata('keyword', $data['keyword']);
 		} else {
-			$data['keyword'] = $this->session->userdata('keyword');
+			$data['keyword'] = $this->session->userdata('keyword', $data);
 		}
 
 		//pagination
@@ -53,31 +53,40 @@ class Mahasiswa extends CI_Controller
 		$queryAllMahasiswa = $this->ModelAdmin->getDataMahasiswa();
 		$data = array('mahasiswa' => $queryAllMahasiswa);
 		$title['title'] = 'Data Mahasiswa';
-		$this->form_validation->set_rules('nim', 'NIM', 'required');
-		$this->form_validation->set_rules('nama', 'Nama Lengkap', 'required');
-		$this->form_validation->set_rules('email', 'Email', 'required');
-		$this->form_validation->set_rules('jurusan', 'Jurusan', 'required');
+
+		$this->form_validation->set_rules('nim', 'NIM', 'required|trim|is_unique[mahasiswa.nim]', [
+			'is_unique' => 'Nama Sudah Terdaftar!'
+		]);
+		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[mahasiswa.email]', [
+			'is_unique' => 'Email Sudah Terdaftar!'
+		]);
 
 		if ($this->form_validation->run() == false) {
 			$this->load->view('templates/header', $title);
 			$this->load->view('templates/sidebar');
-			$this->load->view('view-mahasiswa', $data);
+			$this->load->view('view-mahasiswa-error', $data);
 			$this->load->view('templates/footer');
 		} else {
 			$nim = $this->input->post('nim');
 			$nama = $this->input->post('nama');
 			$email = $this->input->post('email');
 			$jurusan = $this->input->post('jurusan');
+			$password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+			$role_id = $this->input->post('role_id');
+			$is_active = $this->input->post('is_active');
 
-			$ArrInsert = array(
+			$data = array(
 				'nim' => $nim,
 				'nama' => $nama,
 				'email' => $email,
-				'jurusan' => $jurusan
+				'jurusan' => $jurusan,
+				'password' => $password,
+				'role_id' => $role_id,
+				'is_active' => $is_active
 
 			);
 
-			$this->ModelAdmin->insertDataMahasiswa($ArrInsert);
+			$this->ModelAdmin->insertDataMahasiswa($data);
 
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data telah berhasil ditambahkan!</div>');
 
@@ -92,12 +101,19 @@ class Mahasiswa extends CI_Controller
 		$nama = $this->input->post('nama');
 		$email = $this->input->post('email');
 		$jurusan = $this->input->post('jurusan');
+		$password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+		$role_id = $this->input->post('role_id');
+		$is_active = $this->input->post('is_active');
 
 		$data = [
 			'nim' => $nim,
 			'nama' => $nama,
 			'email' => $email,
-			'jurusan' => $jurusan
+			'jurusan' => $jurusan,
+			'password' => $password,
+			'role_id' => $role_id,
+			'is_active' => $is_active
+
 		];
 
 		$where = [
